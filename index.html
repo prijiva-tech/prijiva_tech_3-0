@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PriJiva | Making the World Civically Abled — Youth-Led Civic Movement</title>
+  
+  <!-- SEO Metadata -->
+  <meta name="description" content="PriJiva is a youth-led NGO spreading civic-sense awareness with the mission to make the world Civically Abled through street action, campus workshops, and civic audits.">
+  <meta name="keywords" content="PriJiva, civic sense, youth NGO, civic awareness, community action, pedestrian safety, road safety, volunteer, youth leadership">
+  <meta property="og:title" content="PriJiva | Making the World Civically Abled">
+  <meta property="og:description" content="Youth-led civic awareness movement empowering citizens to build safer, cleaner, and accountable communities.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icons/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/icons/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="PriJiva Home">
+        <img src="assets/images/icons/prijiva-logo.png" alt="PriJiva" class="brand-logo-img" width="36" height="36">
+        <span>PriJiva<span class="brand-badge">YOUTH NGO</span></span>
+      </a>
+
+      <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="our-work.html" class="nav-link">Our Work</a>
+        <a href="impact-events.html" class="nav-link">Impact &amp; Events</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme">
+          <!-- Populated by JS -->
+        </button>
+        <button type="button" class="btn btn-teal btn-sm btn-desktop" data-open-modal="volunteer-modal">
+          Join Movement →
+        </button>
+        <button type="button" class="mobile-menu-btn" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer & Backdrop -->
+  <div class="mobile-nav-backdrop"></div>
+  <aside class="mobile-nav-drawer" role="dialog" aria-label="Mobile Navigation">
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+        <span class="brand-logo">
+          <img src="assets/images/icons/prijiva-logo.png" alt="PriJiva" class="brand-logo-img" width="32" height="32">
+          PriJiva
+        </span>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link active">Home <span>→</span></a>
+        <a href="about.html" class="mobile-nav-link">About Us <span>→</span></a>
+        <a href="our-work.html" class="mobile-nav-link">Our Work <span>→</span></a>
+        <a href="impact-events.html" class="mobile-nav-link">Impact &amp; Events <span>→</span></a>
+        <a href="contact.html" class="mobile-nav-link">Contact Us <span>→</span></a>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem;">
+      <button type="button" class="btn btn-teal" style="width: 100%;" data-open-modal="volunteer-modal">
+        Volunteer with PriJiva
+      </button>
+      <a href="contact.html?inquiry=partner" class="btn btn-outline" style="width: 100%; text-align: center;">
+        Partner with Us
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <span class="pulse-dot"></span>
+            <span>Youth-Led Civic Movement</span>
+          </div>
+          <h1 class="hero-headline">
+            Making the World <br>
+            <span class="text-teal">“Civically Abled.”</span>
+          </h1>
+          <p class="hero-subheading">
+            PriJiva empowers young changemakers to turn civic awareness into everyday action. We tackle pedestrian safety, clean public spaces, road courtesy, and local accountability through joyful community leadership.
+          </p>
+
+          <div class="hero-cta-group">
+            <button type="button" class="btn btn-teal btn-lg" data-open-modal="volunteer-modal">
+              Join the Movement →
+            </button>
+            <a href="impact-events.html" class="btn btn-outline btn-lg">
+              Explore Our Impact
+            </a>
+          </div>
+
+          <div class="hero-stats-badge-row">
+            <div class="hero-stat-mini">
+              <strong>100% Youth-Led</strong>
+              <span>Student Driven</span>
+            </div>
+            <div class="hero-stat-mini">
+              <strong>32+ Wards</strong>
+              <span>Hyperlocal Action</span>
+            </div>
+            <div class="hero-stat-mini">
+              <strong>Direct Impact</strong>
+              <span>Action Over Apathy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual-wrapper">
+          <div class="hero-main-card">
+            <img src="assets/images/illustrations/hero-art.svg" alt="Youth Civic Action Illustration" class="hero-svg-art" width="540" height="400">
+            <div style="margin-top: 1rem; display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; color: var(--text-primary);">
+                Ground Action • [City Hub Placeholder]
+              </span>
+              <span class="badge-tag badge-teal">Active Drives</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Stats Counter Section -->
+    <section class="impact-counters-section" aria-label="Organization Impact Figures">
+      <div class="container">
+        <div class="impact-grid">
+          
+          <div class="impact-card">
+            <div class="impact-number" data-target-counter="15400" data-suffix="+">
+              0
+            </div>
+            <div class="impact-label">Citizens Reached</div>
+            <p class="impact-desc">Directly engaged via street drives and workshops [Placeholder figure].</p>
+          </div>
+
+          <div class="impact-card">
+            <div class="impact-number" data-target-counter="48" data-suffix="+">
+              0
+            </div>
+            <div class="impact-label">Civic Drives Conducted</div>
+            <p class="impact-desc">Conducted across universities and transit nodes [Placeholder figure].</p>
+          </div>
+
+          <div class="impact-card">
+            <div class="impact-number" data-target-counter="420" data-suffix="+">
+              0
+            </div>
+            <div class="impact-label">Youth Volunteers</div>
+            <p class="impact-desc">Passionate students leading everyday civic habits [Placeholder figure].</p>
+          </div>
+
+          <div class="impact-card">
+            <div class="impact-number" data-target-counter="32" data-suffix="">
+              0
+            </div>
+            <div class="impact-label">Communities Engaged</div>
+            <p class="impact-desc">Neighborhoods solving local public space issues [Placeholder figure].</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag indigo">Who We Are</span>
+          <h2 class="section-title">Civic Sense as an Essential Ability</h2>
+          <p class="section-subtitle">
+            We treat civic sense as a life skill that can be practiced and celebrated. We empower youth to take ownership of shared public spaces through simple, high-energy interventions.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Grassroots Awareness</h3>
+            <p style="font-size: 0.95rem; color: var(--text-secondary);">
+              Bringing civic awareness alive through street theatre, safe crossing campaigns, and friendly driver engagement.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Campus Action Hubs</h3>
+            <p style="font-size: 0.95rem; color: var(--text-secondary);">
+              Supporting student-led civic chapters in schools and colleges to mentor peers and audit local infrastructure.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            </div>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Audits &amp; Data</h3>
+            <p style="font-size: 0.95rem; color: var(--text-secondary);">
+              Gathering community data on noise, broken walkways, and missing dustbins to present constructive reports to local bodies.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.75rem;">
+          <a href="about.html" class="btn btn-outline">
+            Read Our Origin Story &amp; Model →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Upcoming Event Card -->
+    <section class="section" style="background: var(--bg-surface); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag pink">Featured Drive</span>
+          <h2 class="section-title">Join Our Next Civic Action Drive</h2>
+          <p class="section-subtitle">
+            Spend a few hours on the ground making your local streets safer and more pedestrian-friendly.
+          </p>
+        </div>
+
+        <div class="featured-event-box">
+          <div>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+              <span class="badge-tag badge-pink">Upcoming Drive</span>
+              <span class="badge-tag badge-indigo">Street Action</span>
+            </div>
+            
+            <h3 style="font-size: 1.6rem; margin-bottom: 0.75rem; line-height: 1.3;">
+              Project Pedestrian First: Safe Crossing &amp; Zebra Awareness
+            </h3>
+            
+            <p style="margin-bottom: 1.25rem; font-size: 0.98rem;">
+              Join fellow youth changemakers in painting high-visibility zebra crossing zones, distributing civic guides to motorists, and auditing pedestrian safety.
+            </p>
+
+            <div class="event-meta-list">
+              <div class="event-meta-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>Saturday, Sep 12, 2026 • 08:30 AM – 12:00 PM [Placeholder Date]</span>
+              </div>
+              <div class="event-meta-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>[Location / Junction Placeholder, e.g. MG Road Junction]</span>
+              </div>
+              <div class="event-meta-item" style="color: var(--color-teal); font-weight: 600;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>Target: 150 Volunteers • Volunteer Certificates Provided</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
+              <button type="button" class="btn btn-pink btn-md rsvp-trigger-btn" data-event-title="Project Pedestrian First" data-event-date="Sep 12, 2026" data-event-loc="[Location Placeholder]">
+                RSVP for Drive →
+              </button>
+              <a href="impact-events.html" class="btn btn-outline btn-md">
+                View All Events
+              </a>
+            </div>
+          </div>
+
+          <div class="featured-event-art">
+            <img src="assets/images/illustrations/event-pedestrian.svg" alt="Project Pedestrian First Art" width="360" height="200">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Civic Pledge Section -->
+    <section class="section">
+      <div class="container">
+        <div class="pledge-section">
+          <div class="section-header" style="margin-bottom: 1rem;">
+            <span class="section-tag lemon">Interactive Pledge</span>
+            <h2 class="section-title">Take the Youth Civic Pledge</h2>
+            <p class="section-subtitle">
+              Select the everyday civic habits you commit to upholding in your shared spaces.
+            </p>
+          </div>
+
+          <div id="civic-pledge-container">
+            <!-- Populated by main.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clean Minimal CTA Banner -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="cta-banner">
+          <h2>Ready to Build a Civically Abled Community?</h2>
+          <p>
+            Whether you want to volunteer on weekends, start a chapter at your institution, or partner with your organization—we welcome you.
+          </p>
+          <div class="cta-btn-group">
+            <button type="button" class="btn btn-teal btn-lg" data-open-modal="volunteer-modal">
+              Volunteer with Us →
+            </button>
+            <a href="contact.html?inquiry=partner" class="btn btn-outline-white btn-lg">
+              Partner with PriJiva
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minimal Clean Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="color: #ffffff;">
+            <img src="assets/images/icons/prijiva-logo.png" alt="PriJiva" class="brand-logo-img" width="36" height="36">
+            <span>PriJiva</span>
+          </a>
+          <p style="margin-top: 0.75rem; max-width: 300px;">
+            A youth-led NGO spreading civic-sense awareness with the mission to make the world <strong>“Civically Abled.”</strong>
+          </p>
+          <div class="social-links">
+            <a href="https://instagram.com/prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva Instagram">IG</a>
+            <a href="https://linkedin.com/company/prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva LinkedIn">IN</a>
+            <a href="https://twitter.com/prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva Twitter">X</a>
+            <a href="https://youtube.com/@prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva YouTube">YT</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Us &amp; Model</a>
+            <a href="our-work.html" class="footer-link">Our Work</a>
+            <a href="impact-events.html" class="footer-link">Impact &amp; Events</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="contact.html?inquiry=volunteer" class="footer-link">Join as Volunteer</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Initiatives</h4>
+          <div class="footer-links">
+            <a href="impact-events.html" class="footer-link">Pedestrian Safety Drives</a>
+            <a href="impact-events.html" class="footer-link">Campus Civic Hackathons</a>
+            <a href="impact-events.html" class="footer-link">No-Honking Audits</a>
+            <a href="impact-events.html" class="footer-link">Community Cleanups</a>
+            <a href="about.html#teams" class="footer-link">Campus Chapters</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+            📧 <span style="font-family: var(--font-mono); font-size: 0.85rem;">hello@prijiva.org [Placeholder]</span>
+          </p>
+          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+            📞 <span style="font-family: var(--font-mono); font-size: 0.85rem;">+91 98765 43210 [Placeholder]</span>
+          </p>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+            📍 <span>[City / State Placeholder]</span>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 PriJiva NGO. All Rights Reserved.
+        </div>
+        <div style="display: flex; gap: 1.25rem;">
+          <a href="CONTENT_GUIDE.md" target="_blank" style="color: var(--color-teal);">Admin Content Guide</a>
+          <a href="contact.html" style="color: #94a3b8;">Contact Directory</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quick Volunteer Sign Up Modal -->
+  <div class="modal-backdrop" id="volunteer-modal" role="dialog" aria-modal="true" aria-labelledby="vol-modal-title">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close modal">×</button>
+      
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <span class="badge-tag badge-teal" style="margin-bottom: 0.4rem;">Volunteer Desk</span>
+        <h3 id="vol-modal-title" style="font-size: 1.45rem;">Join PriJiva as a Volunteer</h3>
+        <p style="font-size: 0.92rem; color: var(--text-muted);">
+          Fill out this short form to connect with our Community Outreach team.
+        </p>
+      </div>
+
+      <form id="quick-volunteer-form">
+        <div class="form-group">
+          <label class="form-label" for="vol-name">Full Name <span class="required">*</span></label>
+          <input type="text" id="vol-name" class="form-control" placeholder="e.g. Maya Krishnan" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="vol-email">Email Address <span class="required">*</span></label>
+          <input type="email" id="vol-email" class="form-control" placeholder="e.g. maya@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="vol-phone">Phone Number</label>
+          <input type="tel" id="vol-phone" class="form-control" placeholder="e.g. +91 98765 43210 [Placeholder]">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="vol-interest">Primary Area of Interest</label>
+          <select id="vol-interest" class="form-control">
+            <option value="street-drives">Weekend Street &amp; Traffic Drives</option>
+            <option value="creative-media">Creative Media &amp; Storytelling</option>
+            <option value="campus-chapter">Campus Chapter Coordination</option>
+            <option value="research">Civic Audits &amp; Research</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-teal" style="width: 100%; margin-top: 0.5rem;">
+          Submit Application →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- RSVP Modal -->
+  <div class="modal-backdrop" id="rsvp-modal" role="dialog" aria-modal="true" aria-labelledby="rsvp-event-title">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close modal">×</button>
+      
+      <div style="margin-bottom: 1.25rem;">
+        <span class="badge-tag badge-pink" style="margin-bottom: 0.4rem;">Drive Registration</span>
+        <h3 id="rsvp-event-title" style="font-size: 1.4rem; margin-bottom: 0.25rem;">Project Pedestrian First</h3>
+        <p id="rsvp-event-meta" style="font-size: 0.88rem; color: var(--color-teal); font-weight: 600;"></p>
+      </div>
+
+      <form id="rsvp-event-form">
+        <input type="hidden" id="rsvp-hidden-event" value="">
+
+        <div class="form-group">
+          <label class="form-label" for="rsvp-name">Your Full Name <span class="required">*</span></label>
+          <input type="text" id="rsvp-name" class="form-control" placeholder="e.g. Aarav Sharma" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="rsvp-email">Email Address <span class="required">*</span></label>
+          <input type="email" id="rsvp-email" class="form-control" placeholder="e.g. aarav@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="rsvp-institution">School / College / Organization</label>
+          <input type="text" id="rsvp-institution" class="form-control" placeholder="e.g. University / Campus Name">
+        </div>
+
+        <button type="submit" class="btn btn-pink" style="width: 100%; margin-top: 0.5rem;">
+          Confirm RSVP →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/siteData.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

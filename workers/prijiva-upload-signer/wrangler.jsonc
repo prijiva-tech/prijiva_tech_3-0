@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "prijiva-upload-signer",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-17",
+  "vars": {
+    "CLOUDINARY_CLOUD_NAME": "dxroljlwh",
+    "CLOUDINARY_API_KEY": "936262467936852",
+    "FIREBASE_PROJECT_ID": "prijiva-v3",
+    "ALLOWED_ORIGINS": "http://localhost:8080,https://prijiva.in,https://www.prijiva.in"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

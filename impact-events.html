@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impact &amp; Events Directory | PriJiva — Ground Drives &amp; Civic Audits</title>
+  
+  <!-- SEO Metadata -->
+  <meta name="description" content="Explore PriJiva's on-ground civic drives, pedestrian campaigns, campus workshops, and past impact reports. Filter by category, RSVP for upcoming drives, and read testimonials.">
+  <meta name="keywords" content="PriJiva events, civic impact, upcoming civic drives, zebra crossing campaign, youth volunteer events, Bengaluru civic drives">
+  <meta property="og:title" content="PriJiva | Impact &amp; Events Directory">
+  <meta property="og:description" content="Discover real ground impact and join our next upcoming civic action drive.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icons/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/icons/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="PriJiva Home">
+        <img src="assets/images/icons/prijiva-logo.png" alt="PriJiva" class="brand-logo-img" width="36" height="36">
+        <span>PriJiva<span class="brand-badge">YOUTH NGO</span></span>
+      </a>
+
+      <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="our-work.html" class="nav-link">Our Work</a>
+        <a href="impact-events.html" class="nav-link active">Impact &amp; Events</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
+        <button type="button" class="btn btn-teal btn-sm btn-desktop" data-open-modal="volunteer-modal">
+          Join Movement →
+        </button>
+        <button type="button" class="mobile-menu-btn" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-backdrop"></div>
+  <aside class="mobile-nav-drawer" role="dialog" aria-label="Mobile Navigation">
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+        <span class="brand-logo">
+          <img src="assets/images/icons/prijiva-logo.png" alt="PriJiva" class="brand-logo-img" width="32" height="32">
+          PriJiva
+        </span>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">Home <span>→</span></a>
+        <a href="about.html" class="mobile-nav-link">About Us <span>→</span></a>
+        <a href="our-work.html" class="mobile-nav-link">Our Work <span>→</span></a>
+        <a href="impact-events.html" class="mobile-nav-link active">Impact &amp; Events <span>→</span></a>
+        <a href="contact.html" class="mobile-nav-link">Contact Us <span>→</span></a>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem;">
+      <button type="button" class="btn btn-teal" style="width: 100%;" data-open-modal="volunteer-modal">
+        Volunteer with PriJiva
+      </button>
+      <a href="contact.html?inquiry=partner" class="btn btn-outline" style="width: 100%; text-align: center;">
+        Partner with Us
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    
+    <!-- Hero Section -->
+    <section class="section" style="padding-bottom: 2rem;">
+      <div class="container">
+        <div class="section-header" style="max-width: 740px;">
+          <span class="section-tag teal">Ground Action</span>
+          <h1 class="section-title">
+            Impact &amp; <br>
+            <span class="text-indigo">Events Directory</span>
+          </h1>
+          <p class="section-subtitle">
+            Browse upcoming weekend civic drives, high school bootcamps, and citizen audits. RSVP to volunteer or explore verified past impact reports.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Simple Impact Stat Summary Bar -->
+    <section style="background: var(--bg-surface); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 2.5rem 0;">
+      <div class="container">
+        <div class="impact-grid">
+          <div class="impact-card">
+            <div class="impact-number" data-target-counter="15400" data-suffix="+">0</div>
+            <div class="impact-label" style="font-size: 0.95rem;">Citizens Reached</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-number" data-target-counter="48" data-suffix="+">0</div>
+            <div class="impact-label" style="font-size: 0.95rem;">Civic Events Done</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-number" data-target-counter="420" data-suffix="+">0</div>
+            <div class="impact-label" style="font-size: 0.95rem;">Youth Volunteers</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-number" data-target-counter="32" data-suffix="">0</div>
+            <div class="impact-label" style="font-size: 0.95rem;">Communities Engaged</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filterable Event & Impact Grid -->
+    <section class="section">
+      <div class="container">
+        
+        <!-- Filter Toolbar -->
+        <div class="filter-toolbar">
+          <div class="filter-pills" id="filter-pills-container">
+            <!-- Dynamically populated by impact.js -->
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+            <div class="search-input-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="events-search-input" class="form-control" placeholder="Search drives, topics..." style="padding-left: 2rem;">
+            </div>
+            <span class="badge-tag badge-teal" id="filtered-events-count">Loading...</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Events Grid -->
+        <div class="events-grid" id="events-grid-container">
+          <!-- Dynamically populated from SITE_DATA.events by impact.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Impact Testimonials -->
+    <section class="section" style="background: var(--bg-surface); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag lemon">Voices</span>
+          <h2 class="section-title">Community Reflections</h2>
+          <p class="section-subtitle">
+            Insights from student volunteers, neighborhood association leaders, and educators partnering with PriJiva.
+          </p>
+        </div>
+
+        <div class="testimonials-grid" id="testimonials-grid-container">
+          <!-- Dynamically populated from SITE_DATA.testimonials by impact.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin Guide Callout -->
+    <section class="section">
+      <div class="container">
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+          <div style="max-width: 620px;">
+            <span class="badge-tag badge-indigo" style="margin-bottom: 0.35rem;">Admin Management</span>
+            <h3 style="margin-bottom: 0.35rem; font-size: 1.25rem;">Want to Add or Edit Events?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); margin: 0;">
+              All events, figures, and outcomes are easily updated in <code style="background: var(--bg-muted); padding: 2px 6px; border-radius: 4px; font-weight: 600;">assets/js/siteData.js</code>. No coding is required to add or archive entries.
+            </p>
+          </div>
+          <div>
+            <a href="CONTENT_GUIDE.md" target="_blank" class="btn btn-outline btn-sm">
+              📖 Admin Content Guide
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minimal Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="color: #ffffff;">
+            <img src="assets/images/icons/prijiva-logo.png" alt="PriJiva" class="brand-logo-img" width="36" height="36">
+            <span>PriJiva</span>
+          </a>
+          <p style="margin-top: 0.75rem; max-width: 300px;">
+            A youth-led NGO spreading civic-sense awareness with the mission to make the world <strong>“Civically Abled.”</strong>
+          </p>
+          <div class="social-links">
+            <a href="https://instagram.com/prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva Instagram">IG</a>
+            <a href="https://linkedin.com/company/prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva LinkedIn">IN</a>
+            <a href="https://twitter.com/prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva Twitter">X</a>
+            <a href="https://youtube.com/@prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva YouTube">YT</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Us &amp; Model</a>
+            <a href="our-work.html" class="footer-link">Our Work</a>
+            <a href="impact-events.html" class="footer-link">Impact &amp; Events</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="contact.html?inquiry=volunteer" class="footer-link">Join as Volunteer</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Initiatives</h4>
+          <div class="footer-links">
+            <a href="impact-events.html" class="footer-link">Pedestrian Safety Drives</a>
+            <a href="impact-events.html" class="footer-link">Campus Civic Hackathons</a>
+            <a href="impact-events.html" class="footer-link">No-Honking Audits</a>
+            <a href="impact-events.html" class="footer-link">Community Cleanups</a>
+            <a href="about.html#teams" class="footer-link">Campus Chapters</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+            📧 <span style="font-family: var(--font-mono); font-size: 0.85rem;">hello@prijiva.org [Placeholder]</span>
+          </p>
+          <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+            📞 <span style="font-family: var(--font-mono); font-size: 0.85rem;">+91 98765 43210 [Placeholder]</span>
+          </p>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+            📍 <span>[City / State Placeholder]</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 PriJiva NGO. All Rights Reserved.
+        </div>
+        <div style="display: flex; gap: 1.25rem;">
+          <a href="CONTENT_GUIDE.md" target="_blank" style="color: var(--color-teal);">Admin Content Guide</a>
+          <a href="contact.html" style="color: #94a3b8;">Contact Directory</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- RSVP Modal -->
+  <div class="modal-backdrop" id="rsvp-modal" role="dialog" aria-modal="true" aria-labelledby="rsvp-event-title">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close modal">×</button>
+      
+      <div style="margin-bottom: 1.25rem;">
+        <span class="badge-tag badge-pink" style="margin-bottom: 0.4rem;">Drive Registration</span>
+        <h3 id="rsvp-event-title" style="font-size: 1.4rem; margin-bottom: 0.25rem;">Project Pedestrian First</h3>
+        <p id="rsvp-event-meta" style="font-size: 0.88rem; color: var(--color-teal); font-weight: 600;"></p>
+      </div>
+
+      <form id="rsvp-event-form">
+        <input type="hidden" id="rsvp-hidden-event" value="">
+
+        <div class="form-group">
+          <label class="form-label" for="rsvp-name">Your Full Name <span class="required">*</span></label>
+          <input type="text" id="rsvp-name" class="form-control" placeholder="e.g. Aarav Sharma" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="rsvp-email">Email Address <span class="required">*</span></label>
+          <input type="email" id="rsvp-email" class="form-control" placeholder="e.g. aarav@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="rsvp-institution">School / College / Organization</label>
+          <input type="text" id="rsvp-institution" class="form-control" placeholder="e.g. University / Campus Name">
+        </div>
+
+        <button type="submit" class="btn btn-pink" style="width: 100%; margin-top: 0.5rem;">
+          Confirm RSVP →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Quick Volunteer Modal -->
+  <div class="modal-backdrop" id="volunteer-modal" role="dialog" aria-modal="true" aria-labelledby="vol-modal-title">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close modal">×</button>
+      
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <span class="badge-tag badge-teal" style="margin-bottom: 0.4rem;">Volunteer Desk</span>
+        <h3 id="vol-modal-title" style="font-size: 1.45rem;">Join PriJiva as a Volunteer</h3>
+        <p style="font-size: 0.92rem; color: var(--text-muted);">
+          Fill out this short form to connect with our Community Outreach team.
+        </p>
+      </div>
+
+      <form id="quick-volunteer-form">
+        <div class="form-group">
+          <label class="form-label" for="vol-name">Full Name <span class="required">*</span></label>
+          <input type="text" id="vol-name" class="form-control" placeholder="e.g. Maya Krishnan" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="vol-email">Email Address <span class="required">*</span></label>
+          <input type="email" id="vol-email" class="form-control" placeholder="e.g. maya@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="vol-phone">Phone Number</label>
+          <input type="tel" id="vol-phone" class="form-control" placeholder="e.g. +91 98765 43210 [Placeholder]">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="vol-interest">Primary Area of Interest</label>
+          <select id="vol-interest" class="form-control">
+            <option value="street-drives">Weekend Street &amp; Traffic Drives</option>
+            <option value="creative-media">Creative Media &amp; Storytelling</option>
+            <option value="campus-chapter">Campus Chapter Coordination</option>
+            <option value="research">Civic Audits &amp; Research</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-teal" style="width: 100%; margin-top: 0.5rem;">
+          Submit Application →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/siteData.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/firebaseConfig.js"></script>
+  <script src="assets/js/impact.js"></script>
+</body>
+</html>

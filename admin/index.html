@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | PriJiva Youth NGO</title>
+
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description"
+    content="Secure administrative content management portal for PriJiva Department Heads and Leadership.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/images/icons/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/images/icons/favicon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+
+  <!-- Core & Admin Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+
+<body class="admin-body">
+
+  <!-- ====================================================================
+       1. LOGIN VIEW (Unauthenticated State)
+       ==================================================================== -->
+  <section id="admin-login-view" class="admin-view active">
+    <div class="admin-auth-screen">
+      <div class="admin-auth-card">
+
+        <div class="admin-auth-brand">
+          <img src="../assets/images/icons/prijiva-logo.png" alt="PriJiva" class="brand-logo-img" width="44" height="44">
+          <span>PriJiva Admin</span>
+        </div>
+
+        <h1 class="admin-auth-title">Department Head Portal</h1>
+        <p class="admin-auth-subtitle">
+          Sign in to manage PriJiva civic drives, events, and published content.
+        </p>
+
+        <div id="admin-login-alert" class="admin-alert admin-alert-error" role="alert"></div>
+
+        <form id="admin-login-form" class="admin-auth-form">
+          <div>
+            <label for="admin-email" class="form-label">Official Email Address <span class="required">*</span></label>
+            <input type="email" id="admin-email" class="form-control" placeholder="e.g. events.head@prijiva.org"
+              autocomplete="username" required>
+          </div>
+
+          <div>
+            <label for="admin-password" class="form-label">Password <span class="required">*</span></label>
+            <input type="password" id="admin-password" class="form-control" placeholder="••••••••"
+              autocomplete="current-password" required>
+          </div>
+
+          <button type="submit" class="btn btn-teal" style="width: 100%; margin-top: 0.5rem;">
+            Sign In to Admin Portal →
+          </button>
+        </form>
+
+        <div
+          style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color); font-size: 0.82rem; color: var(--text-muted);">
+          <p>🔒 Access restricted to approved PriJiva Department Heads &amp; Governance.</p>
+          <a href="../index.html" style="color: var(--color-teal); display: inline-block; margin-top: 0.4rem;">← Return
+            to Public Website</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       2. ACCESS DENIED VIEW (Authenticated but not in /admins/{uid})
+       ==================================================================== -->
+  <section id="admin-denied-view" class="admin-view">
+    <div class="admin-auth-screen">
+      <div class="admin-auth-card">
+
+        <div style="font-size: 2.75rem; margin-bottom: 0.5rem;">🛑</div>
+        <h1 class="admin-auth-title" style="color: var(--color-pink);">Access Denied</h1>
+        <p class="admin-auth-subtitle" style="color: var(--text-secondary); line-height: 1.6;">
+          Your Firebase account is authenticated, but it has not been approved as an active Department Head in the
+          PriJiva admin directory.
+        </p>
+
+        <div class="admin-alert admin-alert-warning show" style="margin-bottom: 1.5rem;">
+          <strong>Owner Approval Required:</strong> Please ask the PriJiva Owner to activate your Department Head record
+          in the Firestore <code>admins</code> collection.
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <button type="button" class="btn btn-outline btn-admin-signout" style="width: 100%;">
+            Sign Out of Account
+          </button>
+          <a href="../index.html" class="btn btn-teal" style="width: 100%; text-align: center;">
+            Return to Public Website →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       3. DASHBOARD VIEW (Approved Department Head / Owner)
+       ==================================================================== -->
+  <section id="admin-dashboard-view" class="admin-view">
+
+    <!-- Admin Navigation Bar -->
+    <header class="admin-navbar">
+      <div class="admin-nav-container">
+
+        <div class="admin-nav-left">
+          <a href="../index.html" class="brand-logo" aria-label="PriJiva Home">
+            <img src="../assets/images/icons/prijiva-logo.png" alt="PriJiva" class="brand-logo-img" width="32" height="32">
+            <span>PriJiva</span>
+          </a>
+          <span id="admin-role-badge" class="admin-nav-badge">Department Head</span>
+        </div>
+
+        <div class="admin-nav-right">
+          <div class="admin-user-info">
+            <span id="admin-user-name" class="admin-user-name">Department Head</span>
+            <span id="admin-user-dept" class="admin-user-dept">Events Planning &amp; Support</span>
+          </div>
+
+          <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
+
+          <a href="../impact-events.html" target="_blank" class="btn btn-outline btn-sm" style="font-size: 0.8rem;">
+            Public Site ↗
+          </a>
+
+          <button type="button" class="btn btn-pink btn-sm btn-admin-signout">
+            Sign Out
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+
+      <!-- Metrics Overview -->
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <div>
+            <div id="stat-total-events" class="admin-stat-number">0</div>
+            <div class="admin-stat-label">Total Events</div>
+          </div>
+          <div style="font-size: 1.75rem;">📅</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div>
+            <div id="stat-published-events" class="admin-stat-number" style="color: var(--color-teal-hover);">0</div>
+            <div class="admin-stat-label">Published (Live)</div>
+          </div>
+          <div style="font-size: 1.75rem;">🟢</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div>
+            <div id="stat-draft-events" class="admin-stat-number" style="color: #d97706;">0</div>
+            <div class="admin-stat-label">Drafts</div>
+          </div>
+          <div style="font-size: 1.75rem;">📝</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div>
+            <div id="stat-archived-events" class="admin-stat-number" style="color: var(--text-muted);">0</div>
+            <div class="admin-stat-label">Archived</div>
+          </div>
+          <div style="font-size: 1.75rem;">📦</div>
+        </div>
+      </div>
+
+      <!-- Events Directory Management Toolbar -->
+      <div class="admin-toolbar">
+
+        <div class="admin-filter-tabs">
+          <button type="button" class="admin-tab-btn active" data-filter="all">All Activities</button>
+          <button type="button" class="admin-tab-btn" data-filter="published">Published</button>
+          <button type="button" class="admin-tab-btn" data-filter="draft">Drafts</button>
+          <button type="button" class="admin-tab-btn" data-filter="archived">Archived</button>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+          <div class="admin-search-box">
+            <span class="admin-search-icon">🔍</span>
+            <input type="text" id="admin-search-events" class="admin-search-input"
+              placeholder="Search title, location, category...">
+          </div>
+
+          <button type="button" id="btn-create-event" class="btn btn-teal btn-sm">
+            + Create New Event
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Events Table Directory -->
+      <div class="admin-table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Event &amp; Category</th>
+              <th style="width: 20%;">Date &amp; Time</th>
+              <th style="width: 15%;">Status</th>
+              <th style="width: 15%;">RSVP Link</th>
+              <th style="width: 15%;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-events-tbody">
+            <!-- Rendered by admin.js -->
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+
+  </section>
+
+  <!-- ====================================================================
+       4. CREATE / EDIT EVENT MODAL DIALOG
+       ==================================================================== -->
+  <div class="modal-backdrop" id="admin-event-modal" role="dialog" aria-modal="true"
+    aria-labelledby="admin-modal-title">
+    <div class="modal-dialog admin-modal-dialog">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close modal">×</button>
+
+      <div style="margin-bottom: 1.25rem;">
+        <span class="badge-tag badge-teal" style="margin-bottom: 0.35rem;">Civic Drive Manager</span>
+        <h3 id="admin-modal-title" style="font-size: 1.4rem;">Create New PriJiva Event</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Fill in the details below. Published events appear immediately on the public website.
+        </p>
+      </div>
+
+      <form id="admin-event-form">
+
+        <div class="form-group">
+          <label class="form-label" for="event-title">Event Title <span class="required">*</span></label>
+          <input type="text" id="event-title" class="form-control"
+            placeholder="e.g. Project WalkRight: Pedestrian Crossing Drive" required>
+        </div>
+
+        <div class="admin-form-grid">
+          <div class="form-group">
+            <label class="form-label" for="event-category">Pillar / Category <span class="required">*</span></label>
+            <select id="event-category" class="form-control" required>
+              <option value="Street Action">Street Action</option>
+              <option value="Campus Workshop">Campus Workshop</option>
+              <option value="Civic Audit">Civic Audit</option>
+              <option value="Environment & Waste">Environment &amp; Waste</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="event-status">Publication Status <span class="required">*</span></label>
+            <select id="event-status" class="form-control" required>
+              <option value="published">Published (Visible Publicly)</option>
+              <option value="draft">Draft (Private / Work in Progress)</option>
+              <option value="archived">Archived (Past Event)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="admin-form-grid">
+          <div class="form-group">
+            <label class="form-label" for="event-date">Event Date <span class="required">*</span></label>
+            <input type="text" id="event-date" class="form-control" placeholder="e.g. Saturday, Nov 14, 2026" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="event-time">Event Timing</label>
+            <input type="text" id="event-time" class="form-control" placeholder="e.g. 8:30 AM - 12:00 PM IST">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="event-location">Location / Venue <span class="required">*</span></label>
+          <input type="text" id="event-location" class="form-control"
+            placeholder="e.g. Sony World Signal, Koramangala, Bengaluru" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="event-description">Short Description <span class="required">*</span></label>
+          <textarea id="event-description" class="form-control" rows="3"
+            placeholder="Briefly describe the civic drive purpose, volunteer activities, and impact goal..."
+            required></textarea>
+        </div>
+
+        <!-- Event Image Direct Upload & Cloudinary Integration -->
+        <div class="form-group">
+          <label class="form-label">Event Cover Image</label>
+
+          <div class="admin-upload-widget">
+            <input type="file" id="event-file-input" accept=".jpg,.jpeg,.png,.webp" style="display: none;">
+
+            <div id="upload-idle-state" class="upload-dropzone">
+              <div style="font-size: 1.6rem; margin-bottom: 0.25rem;">📷</div>
+              <button type="button" id="btn-choose-image" class="btn btn-teal btn-sm" style="margin-bottom: 0.35rem;">
+                Choose Event Image
+              </button>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">
+                Supports JPG, PNG, WebP (Max 5 MB) • Uploads directly to Cloudinary
+              </div>
+            </div>
+
+            <!-- Upload Progress Bar -->
+            <div id="upload-progress-state" class="upload-progress-box" style="display: none;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.35rem;">
+                <span id="upload-status-text">Uploading to Cloudinary...</span>
+                <span id="upload-percentage">0%</span>
+              </div>
+              <div class="progress-bar-track">
+                <div id="upload-progress-bar" class="progress-bar-fill"></div>
+              </div>
+            </div>
+
+            <!-- Uploaded Image Preview & Controls -->
+            <div id="upload-preview-state" class="upload-preview-card" style="display: none;">
+              <img id="event-img-preview" alt="Event cover thumbnail">
+              <div class="upload-preview-overlay">
+                <button type="button" id="btn-replace-image" class="btn btn-sm btn-outline-white">
+                  Replace Image
+                </button>
+                <button type="button" id="btn-remove-image" class="btn btn-sm btn-pink">
+                  Remove
+                </button>
+              </div>
+            </div>
+
+            <div id="upload-error-alert" class="admin-alert admin-alert-error" style="margin-top: 0.5rem;"></div>
+
+            <!-- Advanced Manual URL Fallback (Collapsible) -->
+            <details class="admin-advanced-details" style="margin-top: 0.75rem;">
+              <summary style="font-size: 0.8rem; color: var(--text-muted); cursor: pointer;">
+                ⚙️ Advanced: Enter Cloudinary URL manually
+              </summary>
+              <div style="padding-top: 0.5rem;">
+                <input type="url" id="event-img-url" class="form-control"
+                  placeholder="https://res.cloudinary.com/your-cloud/image/upload/sample.jpg">
+                <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 0.25rem;">
+                  Note: Must be a secure HTTPS Cloudinary delivery URL starting with
+                  <code>https://res.cloudinary.com/</code>.
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+
+        <!-- Event Gallery (Completed Work Showcase) -->
+        <div class="form-group" style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px dashed var(--border-color);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <label class="form-label" style="margin-bottom: 0;">Event Gallery (Up to 5 Photos)</label>
+            <span id="gallery-count-badge" style="font-size: 0.78rem; font-weight: 700; color: var(--color-teal);">0 / 5 Photos</span>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Upload high-resolution event photos to showcase completed work on the public Our Work page.
+          </div>
+
+          <div class="admin-gallery-widget">
+            <input type="file" id="gallery-file-input" accept=".jpg,.jpeg,.png,.webp" multiple style="display: none;">
+
+            <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.75rem;">
+              <button type="button" id="btn-add-gallery-images" class="btn btn-outline btn-sm">
+                📷 Add Event Photos
+              </button>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">
+                JPG, PNG, WebP (Max 5 MB each, up to 5 photos)
+              </span>
+            </div>
+
+            <!-- Gallery Upload Progress Bar -->
+            <div id="gallery-progress-state" class="upload-progress-box" style="display: none; margin-bottom: 0.75rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.35rem;">
+                <span id="gallery-status-text">Uploading gallery images to Cloudinary...</span>
+                <span id="gallery-percentage">0%</span>
+              </div>
+              <div class="progress-bar-track">
+                <div id="gallery-progress-bar" class="progress-bar-fill"></div>
+              </div>
+            </div>
+
+            <div id="gallery-error-alert" class="admin-alert admin-alert-error" style="display: none; margin-bottom: 0.75rem;"></div>
+
+            <!-- Gallery Thumbnail Grid -->
+            <div id="gallery-thumbnails-grid" class="admin-gallery-grid"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="event-rsvp-url">Google Form RSVP URL</label>
+          <input type="url" id="event-rsvp-url" class="form-control"
+            placeholder="https://forms.gle/your-rsvp-form-link">
+          <span style="font-size: 0.78rem; color: var(--text-muted);">
+            When provided, the public "RSVP / Volunteer" button will open this Google Form.
+          </span>
+        </div>
+
+        <div class="admin-form-grid">
+          <div class="form-group">
+            <label class="form-label" for="event-attendees">Volunteer Target / Turnout</label>
+            <input type="text" id="event-attendees" class="form-control" placeholder="e.g. 50 Volunteers Needed">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="event-outcome">Target Outcome</label>
+            <input type="text" id="event-outcome" class="form-control" placeholder="e.g. 5,000 commuters engaged">
+          </div>
+        </div>
+
+        <!-- Show in Our Work Toggle -->
+        <div class="form-group" style="margin-top: 1rem; padding: 0.85rem 1rem; background: var(--bg-body); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+          <label style="display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer; margin-bottom: 0;">
+            <input type="checkbox" id="event-show-in-our-work" style="width: 1.15rem; height: 1.15rem; margin-top: 0.15rem; accent-color: var(--color-teal); cursor: pointer;">
+            <div>
+              <div style="font-weight: 700; font-size: 0.92rem; color: var(--text-primary);">
+                Show in "Our Work" Showcase
+              </div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem;">
+                Enable this to feature this completed event/project on the public <strong>/our-work.html</strong> page. Requires publication status to be Published.
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="submit" id="btn-save-event-submit" class="btn btn-teal" style="flex: 1;">
+            Save Event
+          </button>
+          <button type="button" class="btn btn-outline" data-close-modal>
+            Cancel
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/siteData.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script type="module" src="../assets/js/admin.js"></script>
+</body>
+
+</html>

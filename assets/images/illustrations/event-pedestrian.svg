@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200" fill="none">
+  <rect width="360" height="200" rx="12" fill="#F8FAFC" />
+  <rect y="120" width="360" height="80" fill="#312E81" />
+  <!-- Minimal White Stripes -->
+  <polygon points="50,130 80,130 65,190 35,190" fill="#FFFFFF" opacity="0.95" />
+  <polygon points="110,130 140,130 125,190 95,190" fill="#FFFFFF" opacity="0.95" />
+  <polygon points="170,130 200,130 185,190 155,190" fill="#FFFFFF" opacity="0.95" />
+  <polygon points="230,130 260,130 245,190 215,190" fill="#FFFFFF" opacity="0.95" />
+  <polygon points="290,130 320,130 305,190 275,190" fill="#FFFFFF" opacity="0.95" />
+  <!-- Minimal Pedestrian Icon -->
+  <g transform="translate(150, 30)">
+    <circle cx="30" cy="30" r="28" fill="#14B8A6" />
+    <circle cx="30" cy="18" r="5" fill="#FFFFFF" />
+    <path d="M27 26 L33 26 L32 38 L28 38 Z" fill="#FFFFFF" />
+    <line x1="28" y1="38" x2="25" y2="48" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+    <line x1="32" y1="38" x2="35" y2="48" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+  </g>
+</svg>

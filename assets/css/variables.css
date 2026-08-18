@@ -1,0 +1,101 @@
+/* ====================================================================
+   PRIJIVA DESIGN SYSTEM - VARIABLES & TOKENS (REFINED)
+   Colors: Deep Indigo, Bright Teal, Watermelon Pink, Soft Lemon, Mist White, Charcoal
+   Typography, Spacing, Radii, Shadows, Transitions, Accessible Touch Targets
+   ==================================================================== */
+
+:root {
+  /* --- Primary Palette Tokens --- */
+  --color-indigo: #312e81;          /* Deep Indigo - Primary Headings & Brand */
+  --color-indigo-light: #4338ca;
+  --color-indigo-dark: #1e1b4b;
+  --color-indigo-subtle: #e0e7ff;
+
+  --color-teal: #14b8a6;            /* Bright Teal - Primary Actions & Active Highlights */
+  --color-teal-hover: #0d9488;
+  --color-teal-light: #ccfbf1;
+  --color-teal-glow: rgba(20, 184, 166, 0.2);
+
+  --color-pink: #f43f5e;            /* Watermelon Pink - Emphasis & Secondary CTAs */
+  --color-pink-hover: #e11d48;
+  --color-pink-light: #ffe4e6;
+
+  --color-lemon: #fde68a;           /* Soft Lemon - Subtle Accent Backgrounds */
+  --color-lemon-light: #fef3c7;
+  --color-lemon-dark: #b45309;
+
+  /* --- Neutrals & Surfaces --- */
+  --bg-body: #f8fafc;               /* Mist White */
+  --bg-surface: #ffffff;            /* Pure White */
+  --bg-muted: #f1f5f9;              /* Light Mist */
+  --bg-subtle: #e2e8f0;
+
+  /* --- Typography Colors --- */
+  --text-primary: #1f2937;          /* Charcoal Body Text */
+  --text-headings: #312e81;         /* Deep Indigo Headings */
+  --text-secondary: #4b5563;        /* Slate Muted Text */
+  --text-muted: #6b7280;            /* Soft Grey Metadata */
+  --text-inverse: #ffffff;
+
+  /* --- Borders & Dividers --- */
+  --border-color: #e2e8f0;          /* Fine Subtle Border */
+  --border-hover: #cbd5e1;
+  --border-focus: #14b8a6;
+
+  /* --- Restrained Modern Shadows --- */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-hover: 0 8px 20px rgba(49, 46, 129, 0.07), 0 2px 6px rgba(0, 0, 0, 0.03);
+
+  /* --- Modern Typography Families --- */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* --- Sizing & Radii System --- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 9999px;
+
+  /* --- Spacing System --- */
+  --section-spacing: 5rem;
+  --section-spacing-mobile: 3.5rem;
+  --card-padding: 1.75rem;
+  --card-padding-mobile: 1.25rem;
+  --grid-gap: 1.75rem;
+  --tap-target-min: 44px;
+
+  /* --- Motion & Transitions --- */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- Layout Constraints --- */
+  --container-max-width: 1140px;
+  --header-height: 72px;
+}
+
+/* --- Clean High-Contrast Dark Mode --- */
+[data-theme="dark"] {
+  --bg-body: #0f172a;
+  --bg-surface: #1e293b;
+  --bg-muted: #334155;
+  --bg-subtle: #475569;
+
+  --text-primary: #f8fafc;
+  --text-headings: #e0e7ff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --border-color: #334155;
+  --border-hover: #475569;
+  --border-focus: #14b8a6;
+
+  --color-indigo-subtle: rgba(99, 102, 241, 0.15);
+
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.4);
+}

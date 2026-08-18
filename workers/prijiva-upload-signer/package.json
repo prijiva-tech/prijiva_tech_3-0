@@ -1,0 +1,19 @@
+{
+  "name": "prijiva-upload-signer",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker for cryptographically signing Cloudinary image uploads for authenticated PriJiva Department Heads.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "jose": "^5.9.6"
+  },
+  "devDependencies": {
+    "wrangler": "^4.123.0"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

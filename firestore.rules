@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: Check if the user is authenticated and an approved active admin
+    function isActiveAdmin() {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.active == true;
+    }
+
+    // Helper: Check if the user is an approved active admin with the owner role
+    function isOwner() {
+      return isActiveAdmin() &&
+        get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'owner';
+    }
+
+    // Admins Collection:
+    // - Authenticated users can read their own approval record to verify status
+    // - Owners can read all admin records
+    // - ONLY the owner can create, update, or delete admin records
+    match /admins/{uid} {
+      allow read: if request.auth != null && (request.auth.uid == uid || isOwner());
+      allow write: if isOwner();
+    }
+
+    // Events Collection:
+    // - Public visitors can read ONLY documents where status == 'published'
+    // - Active admins can read, create, update, and delete all events
+    // - Public visitors cannot write under any circumstances
+    match /events/{eventId} {
+      allow read: if resource.data.status == 'published' || isActiveAdmin();
+      allow create, update, delete: if isActiveAdmin();
+    }
+
+    // Default deny for all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

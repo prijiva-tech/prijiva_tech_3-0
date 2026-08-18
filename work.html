@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details | Our Work | PriJiva</title>
+  <meta name="description"
+    content="Detailed impact overview, photo gallery, and volunteer turnout for completed PriJiva civic drives and interventions.">
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icons/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/icons/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="PriJiva Home">
+        <img src="assets/images/icons/prijiva-logo.png" alt="PriJiva" class="brand-logo-img" width="36" height="36">
+        <span>PriJiva<span class="brand-badge">YOUTH NGO</span></span>
+      </a>
+
+      <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="our-work.html" class="nav-link active">Our Work</a>
+        <a href="impact-events.html" class="nav-link">Impact &amp; Events</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme">
+          <!-- Populated by JS -->
+        </button>
+        <button type="button" class="btn btn-teal btn-sm btn-desktop" data-open-modal="volunteer-modal">
+          Join Movement →
+        </button>
+        <button type="button" class="mobile-menu-btn" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer & Backdrop -->
+  <div class="mobile-nav-backdrop"></div>
+  <aside class="mobile-nav-drawer" role="dialog" aria-label="Mobile Navigation">
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+        <span class="brand-logo">
+          <img src="assets/images/icons/prijiva-logo.png" alt="PriJiva" class="brand-logo-img" width="32" height="32">
+          PriJiva
+        </span>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">Home <span>→</span></a>
+        <a href="about.html" class="mobile-nav-link">About Us <span>→</span></a>
+        <a href="our-work.html" class="mobile-nav-link active">Our Work <span>→</span></a>
+        <a href="impact-events.html" class="mobile-nav-link">Impact &amp; Events <span>→</span></a>
+        <a href="contact.html" class="mobile-nav-link">Contact Us <span>→</span></a>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem;">
+      <button type="button" class="btn btn-teal" style="width: 100%;" data-open-modal="volunteer-modal">
+        Volunteer with PriJiva
+      </button>
+      <a href="contact.html?inquiry=partner" class="btn btn-outline" style="width: 100%; text-align: center;">
+        Partner with Us
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content Container -->
+  <main id="main-content">
+    <div class="container" style="padding-top: 2.5rem;">
+      <div id="project-detail-container">
+        <!-- Rendered dynamically by work.js -->
+        <div style="text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">⏳</div>
+          <p>Loading project details...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Minimal Clean Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="color: #ffffff;">
+            <img src="assets/images/icons/prijiva-logo.png" alt="PriJiva" class="brand-logo-img" width="36" height="36">
+            <span>PriJiva</span>
+          </a>
+          <p style="margin-top: 0.75rem; max-width: 300px;">
+            A youth-led NGO spreading civic-sense awareness with the mission to make the world <strong>“Civically Abled.”</strong>
+          </p>
+          <div class="social-links">
+            <a href="https://instagram.com/prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva Instagram">IG</a>
+            <a href="https://linkedin.com/company/prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva LinkedIn">IN</a>
+            <a href="https://twitter.com/prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva Twitter">X</a>
+            <a href="https://youtube.com/@prijiva" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="PriJiva YouTube">YT</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="our-work.html">Our Work</a>
+            <a href="impact-events.html">Impact &amp; Events</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Governance</h4>
+          <div class="footer-links">
+            <a href="about.html#governing-body">Governing Body</a>
+            <a href="about.html#organizing-body">Organizing Body</a>
+            <a href="admin/">Department Head Portal</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Contact &amp; Location</h4>
+          <div class="footer-links">
+            <span>Bengaluru, Karnataka, India</span>
+            <a href="mailto:hello@prijiva.org">hello@prijiva.org</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 PriJiva. All rights reserved. Registered Youth Civic NGO.</p>
+        <p>Built for Civic Responsibility • Zero Commercial Monetization</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Volunteer Modal -->
+  <div id="volunteer-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="volunteer-modal-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close modal">✕</button>
+      <div class="badge-tag badge-teal" style="margin-bottom: 0.5rem;">Join PriJiva</div>
+      <h3 id="volunteer-modal-title" style="font-size: 1.45rem; margin-bottom: 0.4rem; color: var(--color-indigo);">
+        Become a Civic Changemaker
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.25rem;">
+        Fill out your details to join upcoming civic drives, student audits, and community workshops.
+      </p>
+
+      <form id="volunteer-modal-form" style="display: flex; flex-direction: column; gap: 1rem;">
+        <div>
+          <label class="form-label" for="vol-name">Full Name *</label>
+          <input type="text" id="vol-name" class="form-control" placeholder="e.g. Ananya Sharma" required>
+        </div>
+        <div>
+          <label class="form-label" for="vol-email">Email Address *</label>
+          <input type="email" id="vol-email" class="form-control" placeholder="e.g. ananya@example.com" required>
+        </div>
+        <div>
+          <label class="form-label" for="vol-phone">WhatsApp Number *</label>
+          <input type="tel" id="vol-phone" class="form-control" placeholder="e.g. +91 98765 43210" required>
+        </div>
+        <div>
+          <label class="form-label" for="vol-area">Preferred City / Area in Bengaluru</label>
+          <input type="text" id="vol-area" class="form-control" placeholder="e.g. Koramangala / Indiranagar / Campus">
+        </div>
+        <button type="submit" class="btn btn-teal" style="width: 100%; margin-top: 0.5rem;">
+          Submit Application →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/siteData.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/firebaseConfig.js"></script>
+  <script src="assets/js/work.js"></script>
+</body>
+
+</html>
