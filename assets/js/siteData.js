@@ -14,9 +14,9 @@ const SITE_DATA = {
     tagline: "Making the World Civically Abled",
     shortDescription: "A dynamic, youth-led civic movement empowering Gen Z and students to build cleaner, safer, and more respectful public spaces.",
     foundedYear: "2024",
-    hqLocation: "Bengaluru, Karnataka, India [Placeholder]",
-    contactEmail: "hello@prijiva.org [Placeholder]",
-    contactPhone: "+91 98765 43210 [Placeholder]",
+    hqLocation: "Bengaluru, Karnataka, India",
+    contactEmail: "hello@prijiva.org",
+    contactPhone: "+91 98765 43210",
     brandMeaning: {
       headline: "What PriJiva Means",
       pri: "Prithvi (Earth)",
@@ -24,11 +24,11 @@ const SITE_DATA = {
       explanation: "PriJiva brings together Prithvi—Earth—and Jiva—Life. It reflects our belief that caring for the places we live in is inseparable from caring for life itself. Through youth-led civic action, PriJiva works toward communities that are more responsible, aware, and Civically Abled."
     },
     socials: {
-      instagram: "https://instagram.com/prijiva_org [Placeholder]",
-      linkedin: "https://linkedin.com/company/prijiva [Placeholder]",
-      twitter: "https://twitter.com/prijiva_org [Placeholder]",
-      youtube: "https://youtube.com/@prijiva [Placeholder]",
-      whatsappCommunity: "https://chat.whatsapp.com/invite-placeholder"
+      instagram: "https://instagram.com/prijiva_org",
+      linkedin: "https://linkedin.com/company/prijiva",
+      twitter: "https://twitter.com/prijiva_org",
+      youtube: "https://youtube.com/@prijiva",
+      whatsappCommunity: "https://chat.whatsapp.com/invite"
     }
   },
 
@@ -93,140 +93,11 @@ const SITE_DATA = {
   ],
 
   // Featured Civic Drive (Home Page Hero Spotlight)
-  featuredDrive: {
-    id: "feat-zebra-crossing-2026",
-    title: "Project WalkRight: Reclaiming Pedestrian Crossings",
-    date: "Saturday, Oct 24, 2026",
-    time: "8:30 AM - 12:00 PM IST",
-    location: "Sony World Signal, Koramangala [Placeholder]",
-    city: "Bengaluru",
-    category: "Street Action",
-    targetVolunteers: "50 Youth Volunteers Needed",
-    description: "Join us for a morning of creative street engagement, painting high-visibility zebra crossing indicators, and advocating for pedestrian right-of-way with traffic police coordination.",
-    artImage: "assets/images/illustrations/event-pedestrian.svg"
-  },
+  featuredDrive: null,
 
   // Events & Drives Directory (Impact & Events Page)
-  events: [
-    {
-      id: "evt-001",
-      title: "Project WalkRight: Zebra Crossing Respect Drive",
-      category: "Street Action",
-      type: "upcoming",
-      date: "Oct 24, 2026",
-      time: "8:30 AM - 12:00 PM",
-      location: "Sony World Signal, Koramangala [Placeholder]",
-      city: "Bengaluru",
-      badge: "Upcoming Drive",
-      image: "assets/images/illustrations/event-pedestrian.svg",
-      description: "Mobilizing youth to advocate for pedestrian right-of-way, educating motorists about stop-lines, and assisting seniors across busy intersections.",
-      attendees: "50 Volunteers Needed",
-      outcome: "Target: 5,000 commuters engaged; 4 high-risk crossings monitored.",
-      showInOurWork: false,
-      gallery: []
-    },
-    {
-      id: "evt-002",
-      title: "Civic Hackathon: Youth Tech for Civic Audits",
-      category: "Campus Workshop",
-      type: "upcoming",
-      date: "Nov 12, 2026",
-      time: "10:00 AM - 5:00 PM",
-      location: "PES University Auditorium [Placeholder]",
-      city: "Bengaluru",
-      badge: "Upcoming Drive",
-      image: "assets/images/illustrations/event-workshop.svg",
-      description: "A full-day interactive student hackathon building open-source web widgets and AI camera tools to report broken footpaths and signal dysfunctions.",
-      attendees: "120 Attendees Needed",
-      outcome: "Target: 15 functional civic audit prototypes submitted to municipal bodies.",
-      showInOurWork: false,
-      gallery: []
-    },
-    {
-      id: "evt-003",
-      title: "Hospital Silence Zone: Anti-Honking Flash Action",
-      category: "Civic Audit",
-      type: "past",
-      date: "Aug 02, 2026",
-      time: "9:00 AM - 11:30 AM",
-      location: "Victoria Hospital Zone [Placeholder]",
-      city: "Bengaluru",
-      badge: "Completed Impact",
-      image: "assets/images/illustrations/event-noise.svg",
-      description: "Deployed 60 volunteers with creative silence placards and decibel sound level meters outside hospital emergency entrances.",
-      attendees: "60 Volunteers Participated",
-      outcome: "Recorded 42% average reduction in peak decibels outside emergency trauma ward during rush hours.",
-      highlight: "Featured in local city news bulletin",
-      showInOurWork: true,
-      gallery: [
-        "assets/images/illustrations/event-noise.svg",
-        "assets/images/illustrations/hero-art.svg"
-      ]
-    },
-    {
-      id: "evt-004",
-      title: "Youth CleanUp & Smart Bin Placement Drive",
-      category: "Environment & Waste",
-      type: "past",
-      date: "Jul 19, 2026",
-      time: "7:00 AM - 10:30 AM",
-      location: "Agara Lake Perimeter [Placeholder]",
-      city: "Bengaluru",
-      badge: "Completed Impact",
-      image: "assets/images/illustrations/event-cleanup.svg",
-      description: "Mobilized 180 youth volunteers to collect 620kg of single-use plastic and map 12 new smart bin spots with municipal authorities.",
-      attendees: "185 Volunteers Participated",
-      outcome: "620 kg waste diverted; 12 smart bin stations sanctioned by ward council.",
-      highlight: "98% volunteer satisfaction rating",
-      showInOurWork: true,
-      gallery: [
-        "assets/images/illustrations/event-cleanup.svg",
-        "assets/images/illustrations/hero-art.svg"
-      ]
-    },
-    {
-      id: "evt-005",
-      title: "Queue Etiquette & Metro Transit Courtesy Drive",
-      category: "Street Action",
-      type: "past",
-      date: "Jun 14, 2026",
-      time: "8:00 AM - 1:00 PM",
-      location: "Majestic Interchange Station [Placeholder]",
-      city: "Bengaluru",
-      badge: "Completed Impact",
-      image: "assets/images/illustrations/event-transit.svg",
-      description: "Creative flash mob and floor decal installations promoting 'Let Passengers Exit First' and escalator lane discipline.",
-      attendees: "110 Volunteers",
-      outcome: "Observed 65% faster platform clearance times during 3-hour trial window.",
-      highlight: "Adopted as permanent station floor guidance",
-      showInOurWork: true,
-      gallery: [
-        "assets/images/illustrations/event-transit.svg",
-        "assets/images/illustrations/hero-art.svg"
-      ]
-    },
-    {
-      id: "evt-006",
-      title: "Civic Rights 101: High School Civic Literacy Bootcamp",
-      category: "Campus Workshop",
-      type: "past",
-      date: "May 08, 2026",
-      time: "11:00 AM - 3:00 PM",
-      location: "National Public School Campus [Placeholder]",
-      city: "Bengaluru",
-      badge: "Completed Impact",
-      image: "assets/images/illustrations/event-workshop.svg",
-      description: "Interactive session teaching grades 9-12 students how local municipal bodies work, how to file grievances, and everyday civic duties.",
-      attendees: "340 Students",
-      outcome: "Established 3 student-led school civic clubs with ongoing monthly audits.",
-      highlight: "100% student charter adoption",
-      showInOurWork: true,
-      gallery: [
-        "assets/images/illustrations/event-workshop.svg",
-        "assets/images/illustrations/hero-art.svg"
-      ]
-    }
-  ],
+  // Firestore is the live source of truth for all published civic drives.
+  events: [],
 
   // Founder Information (About Us Page)
   founder: {
@@ -256,9 +127,9 @@ const SITE_DATA = {
       photo: "assets/images/placeholders/founder-placeholder.svg",
       roleDescription: "Guides overall institutional vision, strategic priorities, and organizational governance.",
       bioSummary: "Student changemaker and founder of PriJiva, dedicated to turning everyday civic awareness into practical youth leadership.",
-      email: "founder@prijiva.org [Placeholder]",
-      phone: "+91 98765 43210 [Placeholder]",
-      linkedin: "https://linkedin.com/company/prijiva [Placeholder]",
+      email: "founder@prijiva.org",
+      phone: "+91 98765 43210",
+      linkedin: "https://linkedin.com/company/prijiva",
       leadershipMessage: "“Civic sense is not an abstract theory in a textbook; it is the daily muscle memory of respecting the shared spaces we inherit together.”"
     },
 
@@ -267,52 +138,52 @@ const SITE_DATA = {
       {
         id: "sec-exec",
         title: "Executive Secretary",
-        name: "[Executive Secretary Name Placeholder]",
+        name: "Secretariat Desk",
         photo: "assets/images/avatars/avatar-1.svg",
         roleDescription: "Supports executive decision-making, coordinates leadership priorities, and helps ensure the organization’s vision translates into action.",
         bioSummary: "Coordinates cross-functional milestones, supports strategic execution, and aligns executive deliverables.",
-        email: "exec.secretary@prijiva.org [Placeholder]",
-        linkedin: "https://linkedin.com/in/exec-secretary [Placeholder]"
+        email: "hello@prijiva.org",
+        linkedin: "https://linkedin.com/company/prijiva"
       },
       {
         id: "sec-general",
         title: "General Secretary",
-        name: "[General Secretary Name Placeholder]",
+        name: "Secretariat Desk",
         photo: "assets/images/avatars/avatar-2.svg",
         roleDescription: "Oversees overall coordination, records, internal communication, and the smooth functioning of PriJiva’s governance processes.",
         bioSummary: "Manages organizational compliance, meeting records, formal documentation, and team communications.",
-        email: "general.secretary@prijiva.org [Placeholder]",
-        linkedin: "https://linkedin.com/in/general-secretary [Placeholder]"
+        email: "hello@prijiva.org",
+        linkedin: "https://linkedin.com/company/prijiva"
       },
       {
         id: "sec-ops",
         title: "Operations Secretary",
-        name: "[Operations Secretary Name Placeholder]",
+        name: "Secretariat Desk",
         photo: "assets/images/avatars/avatar-3.svg",
         roleDescription: "Leads operational planning, resource coordination, timelines, and on-ground execution support.",
         bioSummary: "Oversees field safety protocols, equipment logistics, and execution timelines across regional drives.",
-        email: "operations.secretary@prijiva.org [Placeholder]",
-        linkedin: "https://linkedin.com/in/ops-secretary [Placeholder]"
+        email: "hello@prijiva.org",
+        linkedin: "https://linkedin.com/company/prijiva"
       },
       {
         id: "sec-outreach",
         title: "Outreach & Partnerships Secretary",
-        name: "[Outreach & Partnerships Secretary Name Placeholder]",
+        name: "Secretariat Desk",
         photo: "assets/images/avatars/avatar-1.svg",
         roleDescription: "Builds relationships with communities, educational institutions, partner organizations, and supporters.",
         bioSummary: "Leads strategic institutional partnerships, campus outreach networks, and civic alliance building.",
-        email: "outreach.secretary@prijiva.org [Placeholder]",
-        linkedin: "https://linkedin.com/in/outreach-secretary [Placeholder]"
+        email: "hello@prijiva.org",
+        linkedin: "https://linkedin.com/company/prijiva"
       },
       {
         id: "sec-strategy",
         title: "Strategy & Communications Secretary",
-        name: "[Strategy & Communications Secretary Name Placeholder]",
+        name: "Secretariat Desk",
         photo: "assets/images/avatars/avatar-2.svg",
         roleDescription: "Shapes PriJiva’s strategic direction, public communication, campaigns, and brand voice.",
         bioSummary: "Drives media advocacy roadmaps, public communications, and creative campaign messaging.",
-        email: "strategy.secretary@prijiva.org [Placeholder]",
-        linkedin: "https://linkedin.com/in/strategy-secretary [Placeholder]"
+        email: "hello@prijiva.org",
+        linkedin: "https://linkedin.com/company/prijiva"
       }
     ]
   },
@@ -330,22 +201,22 @@ const SITE_DATA = {
         description: "Plans, coordinates, and supports PriJiva events, workshops, civic drives, volunteer schedules, and on-ground logistics.",
         tagColor: "teal",
         head: {
-          name: "[Head Name Placeholder]",
+          name: "Department Coordination Desk",
           role: "Department Head",
           photo: "assets/images/avatars/avatar-1.svg",
           bio: "Oversees the event calendar, scheduling, safety protocols, and venue permissions.",
-          email: "events.head@prijiva.org [Placeholder]",
-          phone: "+91 98765 00001 [Placeholder]",
-          linkedin: "https://linkedin.com/in/events-head [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         subHead: {
-          name: "[Sub-Head Name Placeholder]",
+          name: "Operations Support Desk",
           role: "Department Sub-Head",
           photo: "assets/images/avatars/avatar-2.svg",
           bio: "Assists with drive-day coordination, volunteer rosters, and equipment setup.",
-          email: "events.subhead@prijiva.org [Placeholder]",
-          phone: "+91 98765 00002 [Placeholder]",
-          linkedin: "https://linkedin.com/in/events-subhead [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
           "Annual and monthly civic drive calendars",
@@ -359,22 +230,22 @@ const SITE_DATA = {
         description: "Documents activities, maintains records, gathers civic research, tracks outcomes, and supports evidence-led initiatives.",
         tagColor: "indigo",
         head: {
-          name: "[Head Name Placeholder]",
+          name: "Department Coordination Desk",
           role: "Department Head",
           photo: "assets/images/avatars/avatar-3.svg",
           bio: "Leads civic scorecards, survey methodologies, and data-backed reports.",
-          email: "research.head@prijiva.org [Placeholder]",
-          phone: "+91 98765 00003 [Placeholder]",
-          linkedin: "https://linkedin.com/in/research-head [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         subHead: {
-          name: "[Sub-Head Name Placeholder]",
+          name: "Operations Support Desk",
           role: "Department Sub-Head",
           photo: "assets/images/avatars/avatar-1.svg",
           bio: "Manages drive documentation archives and post-event analytics.",
-          email: "research.subhead@prijiva.org [Placeholder]",
-          phone: "+91 98765 00004 [Placeholder]",
-          linkedin: "https://linkedin.com/in/research-subhead [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
           "Hyperlocal citizen audits & sound/traffic surveys",
@@ -388,22 +259,22 @@ const SITE_DATA = {
         description: "Manages PriJiva’s website, digital tools, data systems, internal technology needs, and digital innovation.",
         tagColor: "pink",
         head: {
-          name: "[Head Name Placeholder]",
+          name: "Department Coordination Desk",
           role: "Department Head",
           photo: "assets/images/avatars/avatar-2.svg",
           bio: "Directs web infrastructure, digital tools, and data platform development.",
-          email: "tech.head@prijiva.org [Placeholder]",
-          phone: "+91 98765 00005 [Placeholder]",
-          linkedin: "https://linkedin.com/in/tech-head [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         subHead: {
-          name: "[Sub-Head Name Placeholder]",
+          name: "Operations Support Desk",
           role: "Department Sub-Head",
           photo: "assets/images/avatars/avatar-3.svg",
           bio: "Maintains form integrations, site updates, and tech automations.",
-          email: "tech.subhead@prijiva.org [Placeholder]",
-          phone: "+91 98765 00006 [Placeholder]",
-          linkedin: "https://linkedin.com/in/tech-subhead [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
           "Website architecture, accessibility, and updates",
@@ -417,22 +288,22 @@ const SITE_DATA = {
         description: "Creates stories, graphics, videos, social-media content, campaign material, and media documentation.",
         tagColor: "lemon",
         head: {
-          name: "[Head Name Placeholder]",
+          name: "Department Coordination Desk",
           role: "Department Head",
           photo: "assets/images/avatars/avatar-1.svg",
           bio: "Shapes PriJiva's creative visual voice, campaigns, and viral civic storytelling.",
-          email: "media.head@prijiva.org [Placeholder]",
-          phone: "+91 98765 00007 [Placeholder]",
-          linkedin: "https://linkedin.com/in/media-head [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         subHead: {
-          name: "[Sub-Head Name Placeholder]",
+          name: "Operations Support Desk",
           role: "Department Sub-Head",
           photo: "assets/images/avatars/avatar-2.svg",
           bio: "Coordinates ground photography, reels, and digital campaign collateral.",
-          email: "media.subhead@prijiva.org [Placeholder]",
-          phone: "+91 98765 00008 [Placeholder]",
-          linkedin: "https://linkedin.com/in/media-subhead [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
           "Social media campaigns, reels, and civic infographics",
@@ -446,22 +317,22 @@ const SITE_DATA = {
         description: "Supports volunteer onboarding, member wellbeing, internal coordination, recognition, and team culture.",
         tagColor: "teal",
         head: {
-          name: "[Head Name Placeholder]",
+          name: "Department Coordination Desk",
           role: "Department Head",
           photo: "assets/images/avatars/avatar-3.svg",
           bio: "Focuses on volunteer onboarding, community health, and student recognition.",
-          email: "people.head@prijiva.org [Placeholder]",
-          phone: "+91 98765 00009 [Placeholder]",
-          linkedin: "https://linkedin.com/in/people-head [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         subHead: {
-          name: "[Sub-Head Name Placeholder]",
+          name: "Operations Support Desk",
           role: "Department Sub-Head",
           photo: "assets/images/avatars/avatar-1.svg",
           bio: "Coordinates volunteer feedback, recognition awards, and chapter check-ins.",
-          email: "people.subhead@prijiva.org [Placeholder]",
-          phone: "+91 98765 00010 [Placeholder]",
-          linkedin: "https://linkedin.com/in/people-subhead [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
           "Volunteer welcoming, training, and chapter orientation",
@@ -475,22 +346,22 @@ const SITE_DATA = {
         description: "Builds community relationships, coordinates field engagement, conducts local outreach, and supports ground-level civic action.",
         tagColor: "indigo",
         head: {
-          name: "[Head Name Placeholder]",
+          name: "Department Coordination Desk",
           role: "Department Head",
           photo: "assets/images/avatars/avatar-2.svg",
           bio: "Leads campus chapter expansion, resident alliances, and local outreach.",
-          email: "outreach.head@prijiva.org [Placeholder]",
-          phone: "+91 98765 00011 [Placeholder]",
-          linkedin: "https://linkedin.com/in/outreach-head [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         subHead: {
-          name: "[Sub-Head Name Placeholder]",
+          name: "Operations Support Desk",
           role: "Department Sub-Head",
           photo: "assets/images/avatars/avatar-3.svg",
           bio: "Liaises with student leaders and neighborhood welfare associations.",
-          email: "outreach.subhead@prijiva.org [Placeholder]",
-          phone: "+91 98765 00012 [Placeholder]",
-          linkedin: "https://linkedin.com/in/outreach-subhead [Placeholder]"
+          email: "hello@prijiva.org",
+          phone: "Contact via Desk",
+          linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
           "Launching & supporting school/college campus chapters",
@@ -551,29 +422,7 @@ const SITE_DATA = {
   ],
 
   // Community Testimonials (Impact Page)
-  testimonials: [
-    {
-      id: "test-1",
-      quote: "PriJiva brought infectious energy to our neighborhood zebra crossing drive. Commuters were genuinely smiling while learning to stop behind the white line!",
-      author: "[Partner / Volunteer Name Placeholder]",
-      role: "Student Volunteer Lead",
-      affiliation: "Koramangala Youth Pod [Placeholder]"
-    },
-    {
-      id: "test-2",
-      quote: "The interactive Civic Literacy bootcamp gave our school council the exact toolkit to audit pedestrian safety around our campus gates.",
-      author: "[Educator / Principal Name Placeholder]",
-      role: "High School Teacher & Chapter Advisor",
-      affiliation: "Bengaluru Central Academy [Placeholder]"
-    },
-    {
-      id: "test-3",
-      quote: "Watching young students engage peacefully with drivers outside hospital silence zones showed how much positive civic leadership can achieve.",
-      author: "[Resident Representative Placeholder]",
-      role: "RWA Secretary",
-      affiliation: "Indiranagar Ward 112 [Placeholder]"
-    }
-  ],
+  testimonials: [],
 
   // Interactive Civic Pledges (Home Page Widget)
   civicPledges: [

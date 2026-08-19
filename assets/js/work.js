@@ -150,16 +150,25 @@ async function initOurWorkShowcase() {
     }
 
     if (filtered.length === 0) {
+      const isFiltered = searchQuery !== '' || selectedCategory !== 'all';
       grid.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 3.5rem 1.5rem; background: var(--bg-surface); border: 1px dashed var(--border-color); border-radius: var(--radius-xl);">
           <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">🌱</div>
-          <h3 style="margin-bottom: 0.35rem; font-size: 1.25rem;">No completed work found</h3>
-          <p style="color: var(--text-muted); max-width: 420px; margin: 0 auto 1.25rem auto; font-size: 0.95rem;">
-            Try selecting a different category filter or clearing your search term.
+          <h3 style="margin-bottom: 0.35rem; font-size: 1.25rem;">${isFiltered ? 'No matching completed work found' : 'No completed work published yet'}</h3>
+          <p style="color: var(--text-muted); max-width: 440px; margin: 0 auto 1.25rem auto; font-size: 0.95rem;">
+            ${isFiltered 
+              ? 'Try selecting a different category filter or clearing your search term.' 
+              : 'Completed civic drives and verified impact photos will appear here as they are published by department heads.'}
           </p>
-          <button type="button" class="btn btn-secondary btn-sm" id="reset-work-filter-btn">
-            Reset Filters
-          </button>
+          ${isFiltered ? `
+            <button type="button" class="btn btn-secondary btn-sm" id="reset-work-filter-btn">
+              Reset Filters
+            </button>
+          ` : `
+            <a href="impact-events.html" class="btn btn-secondary btn-sm">
+              View Events →
+            </a>
+          `}
         </div>
       `;
 
@@ -259,7 +268,7 @@ async function initProjectDetailView() {
   }
 
   // First check static SITE_DATA.events
-  let project = (window.SITE_DATA?.events || []).find(e => e.id === projectId);
+  let project = (window.SITE_DATA?.events || []).find(e => e.id === projectId && e.status !== 'draft' && e.showInOurWork === true);
 
   // Attempt to fetch from Firestore
   for (let i = 0; i < 15; i++) {
@@ -270,7 +279,7 @@ async function initProjectDetailView() {
   if (window.PriJivaFirebase?.getPublishedEventById) {
     try {
       const doc = await window.PriJivaFirebase.getPublishedEventById(projectId);
-      if (doc && doc.status === 'published') {
+      if (doc && doc.status === 'published' && doc.showInOurWork === true) {
         project = {
           id: doc.id,
           title: doc.title,

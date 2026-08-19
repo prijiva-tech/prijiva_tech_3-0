@@ -24,26 +24,26 @@ function initTeamDirectory() {
     if (team.badgeColor === 'blue') badgeClass = 'badge-indigo';
 
     return `
-      <div class="team-card" id="team-${team.id}">
+      <div class="team-card" id="team-${escapeHtml(team.id)}">
         <div>
           <div class="team-card-header">
-            <span class="badge-tag ${badgeClass}" style="margin-bottom: 0.5rem;">${team.teamName}</span>
-            <h3 style="font-size: 1.15rem; margin-bottom: 0.15rem; color: var(--color-indigo);">${team.leadName}</h3>
-            <div style="font-size: 0.85rem; color: var(--color-teal); font-weight: 700;">${team.role}</div>
+            <span class="badge-tag ${badgeClass}" style="margin-bottom: 0.5rem;">${escapeHtml(team.teamName)}</span>
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.15rem; color: var(--color-indigo);">${escapeHtml(team.leadName)}</h3>
+            <div style="font-size: 0.85rem; color: var(--color-teal); font-weight: 700;">${escapeHtml(team.role)}</div>
           </div>
           
           <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 0.85rem;">
-            ${team.description}
+            ${escapeHtml(team.description)}
           </p>
 
           <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.35rem;">
             Responsibilities:
           </div>
           <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.25rem;">
-            ${team.responsibilities.map(r => `
+            ${(team.responsibilities || []).map(r => `
               <li style="display: flex; align-items: flex-start; gap: 0.4rem;">
                 <span style="color: var(--color-teal); font-weight: 800;">•</span>
-                <span>${r}</span>
+                <span>${escapeHtml(r)}</span>
               </li>
             `).join('')}
           </ul>
@@ -51,20 +51,20 @@ function initTeamDirectory() {
           <div style="background: var(--bg-body); border-radius: var(--radius-sm); border: 1px solid var(--border-color); padding: 0.75rem 0.85rem; font-size: 0.82rem; display: flex; flex-direction: column; gap: 0.35rem;">
             <div style="display: flex; align-items: center; justify-content: space-between;">
               <span style="color: var(--text-muted);">📧 Email:</span>
-              <span style="font-weight: 600; color: var(--text-primary); font-family: var(--font-mono); font-size: 0.8rem;">${team.email}</span>
+              <span style="font-weight: 600; color: var(--text-primary); font-family: var(--font-mono); font-size: 0.8rem;">${escapeHtml(team.email)}</span>
             </div>
             <div style="display: flex; align-items: center; justify-content: space-between;">
               <span style="color: var(--text-muted);">📞 Phone:</span>
-              <span style="font-weight: 600; color: var(--text-primary); font-family: var(--font-mono); font-size: 0.8rem;">${team.phone}</span>
+              <span style="font-weight: 600; color: var(--text-primary); font-family: var(--font-mono); font-size: 0.8rem;">${escapeHtml(team.phone)}</span>
             </div>
           </div>
         </div>
 
         <div class="team-contact-action-row">
-          <button type="button" class="btn btn-teal btn-sm message-team-trigger" style="flex: 1;" data-team-name="${team.teamName}">
+          <button type="button" class="btn btn-teal btn-sm message-team-trigger" style="flex: 1;" data-team-name="${escapeHtml(team.teamName)}">
             ✉️ Contact Team
           </button>
-          <button type="button" class="btn btn-secondary btn-sm copy-btn" data-copy-text="${team.email}" title="Copy Email">
+          <button type="button" class="btn btn-secondary btn-sm copy-btn" data-copy-text="${escapeHtml(team.email)}" title="Copy Email">
             📋 Copy
           </button>
         </div>
@@ -168,4 +168,14 @@ function initCopyActions() {
       }
     }
   });
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
