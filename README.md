@@ -28,9 +28,15 @@ app-prototype3-0/
 ├── contact.html                      # Public Contact: Direct channels, validated inquiry form, departmental directory
 ├── favicon.ico                       # Root favicon for automatic browser discovery
 ├── firestore.rules                   # Production Cloud Firestore security rules
+├── README.md                         # Project documentation and architectural overview
 │
 ├── admin/
 │   └── index.html                    # Protected Admin Portal (/admin/) for Department Heads & Governance
+│
+├── docs/
+│   ├── ADMIN_GUIDE.md                # Owner provisioning and Department Head portal guide
+│   ├── CONTENT_GUIDE.md              # Content customization and siteData editing manual
+│   └── CLOUDFLARE_WORKER_SETUP.md    # Cloudflare Worker deployment and secrets guide
 │
 ├── assets/
 │   ├── css/
@@ -64,19 +70,14 @@ app-prototype3-0/
 │       ├── package-lock.json         # Locked dependency tree
 │       └── README.md                 # Worker documentation
 │
-├── scripts/
-│   └── run_all_tests.py              # Master test runner executing all verification suites
-│
-├── README.md                         # Project documentation and architectural overview
-├── ADMIN_GUIDE.md                    # Owner provisioning and Department Head portal guide
-├── CONTENT_GUIDE.md                  # Content customization and siteData editing manual
-├── CLOUDFLARE_WORKER_SETUP.md        # Cloudflare Worker deployment and secrets guide
-│
-├── verify_admin_security.py          # Test suite: Admin portal, RBAC, rules, security requirements
-├── verify_worker_security.py         # Test suite: Cloudflare Worker cryptography, RBAC, HMAC SHA-1, zero secrets
-├── verify_assets.py                  # Test suite: HTTP 200 checks for all site assets
-├── verify_about_redesign.py          # Test suite: About page structure, ethos, 4-step model, brand semantics
-└── verify_our_work.py                # Test suite: Our Work showcase, gallery uploader, detail view, lightbox
+└── scripts/
+    ├── run_all_tests.py              # Master test runner executing all verification suites
+    ├── validate_paths.py             # Path & relative link integrity validator
+    ├── verify_admin_security.py      # Test suite: Admin portal, RBAC, rules, security requirements
+    ├── verify_worker_security.py     # Test suite: Cloudflare Worker cryptography, RBAC, HMAC SHA-1, zero secrets
+    ├── verify_assets.py              # Test suite: HTTP 200 checks for all site assets
+    ├── verify_about_redesign.py      # Test suite: About page structure, ethos, 4-step model, brand semantics
+    └── verify_our_work.py            # Test suite: Our Work showcase, gallery uploader, detail view, lightbox
 ```
 
 ---
@@ -212,13 +213,14 @@ Run the full verification suite with a single command:
 python scripts/run_all_tests.py
 ```
 
-Individual verification suites (preserved in project root):
+Individual verification suites:
 ```bash
-python verify_admin_security.py       # RBAC, views, Firestore rules, auth flow
-python verify_worker_security.py      # Worker RS256, jose JWKS, HMAC SHA-1, zero secret leakage
-python verify_assets.py               # HTTP 200 checks for all 44 site assets
-python verify_about_redesign.py       # About page layout, 4-step model, brand meaning
-python verify_our_work.py             # Our Work showcase, gallery, detail view, lightbox
+python scripts/verify_admin_security.py       # RBAC, views, Firestore rules, auth flow
+python scripts/verify_worker_security.py      # Worker RS256, jose JWKS, HMAC SHA-1, zero secret leakage
+python scripts/verify_assets.py               # HTTP 200 checks for all 44 site assets
+python scripts/verify_about_redesign.py       # About page layout, 4-step model, brand meaning
+python scripts/verify_our_work.py             # Our Work showcase, gallery, detail view, lightbox
+python scripts/validate_paths.py              # Relative path integrity validator
 ```
 
 ---

@@ -23,10 +23,16 @@ The PriJiva website uses a refined, minimal, and energetic color palette:
 app-prototype3-0/
 ├── index.html                  # Home page
 ├── about.html                  # About Us & Leadership Structure
-├── impact-events.html          # Impact metrics & filterable event directory
+├── our-work.html               # Our Work showcase
+├── work.html                   # Single Project detail view
+├── impact-events.html          # Events directory
 ├── contact.html                # Contact channels, form & team directory
-├── CONTENT_GUIDE.md            # Content editing manual (this file)
+├── admin/                      # Protected Admin Portal (/admin/)
 ├── README.md                   # Quickstart and setup guide
+├── docs/
+│   ├── CONTENT_GUIDE.md        # Content editing manual (this file)
+│   ├── ADMIN_GUIDE.md          # Admin portal and owner provisioning guide
+│   └── CLOUDFLARE_WORKER_SETUP.md # Cloudflare Worker deployment guide
 └── assets/
     ├── css/
     │   ├── variables.css       # Colors, typography, spacing, shared tokens

@@ -18,7 +18,7 @@ firebase_js = fetch_url("assets/js/firebaseConfig.js")
 admin_js = fetch_url("assets/js/admin.js")
 impact_js = fetch_url("assets/js/impact.js")
 rules = fetch_url("firestore.rules")
-admin_guide = fetch_url("ADMIN_GUIDE.md")
+admin_guide = fetch_url("docs/ADMIN_GUIDE.md")
 
 checks = [
     # 1. Admin /admin/ HTML Security, Views & Relative Asset Paths

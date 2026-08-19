@@ -13,11 +13,11 @@ import subprocess
 import time
 
 TEST_SCRIPTS = [
-    ("Admin & RBAC Security Verification", "verify_admin_security.py"),
-    ("Cloudflare Worker & Upload Security", "verify_worker_security.py"),
-    ("Static Assets & Endpoints (HTTP 200)", "verify_assets.py"),
-    ("About Page Redesign & Brand Semantics", "verify_about_redesign.py"),
-    ("Our Work Showcase & Gallery Lightbox", "verify_our_work.py"),
+    ("Admin & RBAC Security Verification", "scripts/verify_admin_security.py"),
+    ("Cloudflare Worker & Upload Security", "scripts/verify_worker_security.py"),
+    ("Static Assets & Endpoints (HTTP 200)", "scripts/verify_assets.py"),
+    ("About Page Redesign & Brand Semantics", "scripts/verify_about_redesign.py"),
+    ("Our Work Showcase & Gallery Lightbox", "scripts/verify_our_work.py"),
 ]
 
 def main():

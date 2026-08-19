@@ -24,4 +24,4 @@ npm install
 npx wrangler dev
 ```
 
-For full deployment instructions, see [**`CLOUDFLARE_WORKER_SETUP.md`**](../../CLOUDFLARE_WORKER_SETUP.md).
+For full deployment instructions, see [**`CLOUDFLARE_WORKER_SETUP.md`**](../../docs/CLOUDFLARE_WORKER_SETUP.md).

@@ -14,18 +14,21 @@ def fetch_url(endpoint):
         print(f"[ERROR] Failed to fetch {url}: {e}")
         return ""
 
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 def read_local_file(relative_path):
+    full_path = os.path.join(ROOT_DIR, relative_path)
     try:
-        with open(relative_path, "r", encoding="utf-8") as f:
+        with open(full_path, "r", encoding="utf-8") as f:
             return f.read()
     except Exception as e:
-        print(f"[ERROR] Failed to read file {relative_path}: {e}")
+        print(f"[ERROR] Failed to read file {full_path}: {e}")
         return ""
 
 worker_pkg = read_local_file("workers/prijiva-upload-signer/package.json")
 worker_wrangler = read_local_file("workers/prijiva-upload-signer/wrangler.jsonc")
 worker_src = read_local_file("workers/prijiva-upload-signer/src/index.js")
-worker_guide = read_local_file("CLOUDFLARE_WORKER_SETUP.md")
+worker_guide = read_local_file("docs/CLOUDFLARE_WORKER_SETUP.md")
 admin_html = fetch_url("admin/")
 admin_js = fetch_url("assets/js/admin.js")
 firebase_js = fetch_url("assets/js/firebaseConfig.js")
