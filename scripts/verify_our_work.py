@@ -73,17 +73,19 @@ def run_checks():
         ("Work Detail: Navigation link to Our Work", '<a href="our-work.html" class="nav-link active">Our Work</a>' in work_html),
 
         # work.js logic checks
-        ("Work JS: Filters only status == 'published' && showInOurWork == true", 'doc.showInOurWork === true' in work_js),
+        ("Work JS: Filters derived completed events", "derive(doc) === 'completed'" in work_js or "deriveEventLifecycle" in work_js),
         ("Work JS: Builds dynamic category filters from present data", 'buildCategoryFilters' in work_js and 'new Set()' in work_js),
         ("Work JS: Photo gallery rendering up to 5 photos", 'project-gallery-grid' in work_js),
         ("Work JS: Lightbox modal handlers present", 'initLightbox' in work_js and 'project-lightbox' in work_js),
         ("Work JS: getPublishedEventById single event query", 'getPublishedEventById' in work_js),
+        ("Work JS: Protects detail view for completed events", 'derive(doc) === \'completed\'' in work_js or 'lifecycle === \'completed\'' in work_js),
 
-        # Admin Gallery & showInOurWork checks
+        # Admin Gallery & Form checks
         ("Admin HTML: Gallery input accepts multiple images", 'id="gallery-file-input"' in admin_html and 'multiple' in admin_html),
         ("Admin HTML: Add Event Photos button present", 'id="btn-add-gallery-images"' in admin_html),
         ("Admin HTML: Gallery Progress bar present", 'id="gallery-progress-bar"' in admin_html),
         ("Admin HTML: Gallery Thumbnail grid present", 'id="gallery-thumbnails-grid"' in admin_html),
+        ("Admin HTML: Calendar Date ISO input present", 'id="event-date-iso"' in admin_html),
         ("Admin HTML: Show in Our Work checkbox present", 'id="event-show-in-our-work"' in admin_html),
 
         # Admin JS logic checks
@@ -92,6 +94,7 @@ def run_checks():
         ("Admin JS: Enforces JPG, PNG, WebP for gallery", 'Unsupported image format. Please choose JPG, PNG, or WebP.' in admin_js),
         ("Admin JS: Calls worker /sign-upload for gallery photos", 'signerUrl' in admin_js and '/sign-upload' in admin_js),
         ("Admin JS: Validates res.cloudinary.com for all gallery URLs", 'https://res.cloudinary.com/' in admin_js),
+        ("Admin JS: Validates and saves eventDate in payload", 'eventDate:' in admin_js and 'isValidEventDate' in admin_js),
         ("Admin JS: Saves showInOurWork boolean in payload", 'showInOurWork: Boolean(' in admin_js),
         ("Admin JS: Saves gallery array in payload", 'gallery: currentGalleryUrls' in admin_js),
         ("Admin JS: Preserves gallery on edit in openEventModal", 'currentGalleryUrls = Array.isArray(eventData?.gallery)' in admin_js),
@@ -99,6 +102,7 @@ def run_checks():
         # Firebase JS checks
         ("Firebase JS: Exports getPublishedEventById", 'export async function getPublishedEventById(' in firebase_js),
         ("Firebase JS: Checks status == published in single event query", 'data.status === "published"' in firebase_js),
+        ("Firebase JS: Exports deriveEventLifecycle helper", 'export function deriveEventLifecycle(' in firebase_js),
         ("Firebase JS: Preserves canonical Worker URL", 'prijiva-upload-signer.prijivatech.workers.dev' in firebase_js),
         ("Firebase JS: No old incorrect worker domain", 'prijiva.workers.dev' not in firebase_js),
     ]

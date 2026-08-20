@@ -198,11 +198,86 @@ export async function updateEvent(eventId, eventData) {
 }
 
 /**
- * Delete an event document
+ * Permanently delete an event document from Firestore (Controlled Owner-only action)
  */
 export async function deleteEvent(eventId) {
+  if (!eventId) throw new Error("Event ID is required for deletion");
   const eventDocRef = doc(db, "events", eventId);
-  return deleteDoc(eventDocRef);
+  await deleteDoc(eventDocRef);
+  return { success: true };
+}
+
+/**
+ * ====================================================================
+ * SHARED EVENT LIFECYCLE & IST DATE HELPERS
+ * ====================================================================
+ */
+
+/**
+ * Get current date in Asia/Kolkata timezone formatted as YYYY-MM-DD.
+ * Uses Intl.DateTimeFormat(...).formatToParts() for deterministic output.
+ */
+export function getTodayIST() {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Kolkata',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  });
+  const parts = formatter.formatToParts(new Date());
+  let year = '';
+  let month = '';
+  let day = '';
+  for (const part of parts) {
+    if (part.type === 'year') year = part.value;
+    if (part.type === 'month') month = part.value;
+    if (part.type === 'day') day = part.value;
+  }
+  return `${year}-${month}-${day}`;
+}
+
+/**
+ * Validate that a string is a valid YYYY-MM-DD calendar date
+ */
+export function isValidEventDate(dateStr) {
+  if (typeof dateStr !== 'string') return false;
+  const match = dateStr.trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return false;
+  const year = parseInt(match[1], 10);
+  const month = parseInt(match[2], 10);
+  const day = parseInt(match[3], 10);
+  if (month < 1 || month > 12 || day < 1 || day > 31) return false;
+  const date = new Date(Date.UTC(year, month - 1, day));
+  return (
+    date.getUTCFullYear() === year &&
+    date.getUTCMonth() === month - 1 &&
+    date.getUTCDate() === day
+  );
+}
+
+/**
+ * Derive lifecycle state in Asia/Kolkata: 'upcoming' | 'completed' | 'archived' | 'draft'
+ * - draft: Private draft
+ * - archived: Archived record, hidden publicly
+ * - published:
+ *     - missing/invalid eventDate -> 'upcoming' (safe fallback for legacy documents)
+ *     - eventDate >= todayIST -> 'upcoming' (remains upcoming all day through 23:59:59 IST)
+ *     - eventDate < todayIST -> 'completed' (rolls over at 00:00:00 IST the next day)
+ */
+export function deriveEventLifecycle(eventData) {
+  if (!eventData) return 'draft';
+  const status = eventData.status || 'draft';
+  if (status === 'archived') return 'archived';
+  if (status === 'draft') return 'draft';
+  if (status === 'published') {
+    const eventDate = (eventData.eventDate || '').trim();
+    if (!isValidEventDate(eventDate)) {
+      return 'upcoming';
+    }
+    const todayIST = getTodayIST();
+    return eventDate < todayIST ? 'completed' : 'upcoming';
+  }
+  return 'draft';
 }
 
 /**
@@ -233,5 +308,8 @@ window.PriJivaFirebase = window.PrijivaFirebase = {
   getAllAdminEvents,
   createEvent,
   updateEvent,
-  deleteEvent
+  deleteEvent,
+  getTodayIST,
+  isValidEventDate,
+  deriveEventLifecycle
 };

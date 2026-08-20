@@ -20,11 +20,18 @@ async function initEventsManager() {
 
   if (!grid) return;
 
-  // Active events list initialized from static data
-  let activeEvents = (window.SITE_DATA?.events || []).map(e => ({ ...e }));
+  // Active events list initialized from static data (only upcoming events)
+  let activeEvents = (window.SITE_DATA?.events || [])
+    .filter(e => {
+      const derive = window.PriJivaFirebase?.deriveEventLifecycle;
+      if (typeof derive === 'function') {
+        return derive(e) === 'upcoming';
+      }
+      return e.type !== 'past' && e.status !== 'draft' && e.status !== 'archived';
+    })
+    .map(e => ({ ...e, type: 'upcoming' }));
   let currentCategory = 'all';
   let currentSearch = '';
-  let currentStatus = 'all';
 
   // Attempt to load live published events from Firestore
   async function loadFirestorePublishedEvents() {
@@ -38,12 +45,16 @@ async function initEventsManager() {
       try {
         const firestoreEvents = await window.PriJivaFirebase.getPublishedEvents();
         if (firestoreEvents && firestoreEvents.length > 0) {
-          activeEvents = firestoreEvents.map(doc => ({
+          const derive = window.PriJivaFirebase.deriveEventLifecycle || (d => 'upcoming');
+          // Filter strictly for Upcoming events (published + today or future in Asia/Kolkata, or safe fallback)
+          const upcomingEvents = firestoreEvents.filter(doc => derive(doc) === 'upcoming');
+          activeEvents = upcomingEvents.map(doc => ({
             id: doc.id,
             title: doc.title,
             category: doc.category || 'Street Action',
             badge: doc.category || 'Street Action',
-            type: doc.type || 'upcoming',
+            type: 'upcoming',
+            eventDate: doc.eventDate || '',
             date: doc.date || 'Upcoming',
             time: doc.time || '',
             location: doc.location || 'Bengaluru',
@@ -63,9 +74,7 @@ async function initEventsManager() {
 
   // Categories
   const categories = [
-    { key: 'all', label: 'All Activities' },
-    { key: 'upcoming', label: 'Upcoming Drives' },
-    { key: 'past', label: 'Past Impact' },
+    { key: 'all', label: 'All Drives' },
     { key: 'Street Action', label: 'Street Action' },
     { key: 'Campus Workshop', label: 'Workshops' },
     { key: 'Civic Audit', label: 'Audits' },
@@ -85,14 +94,7 @@ async function initEventsManager() {
         filterPillsContainer.querySelectorAll('.filter-pill-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         
-        const catKey = btn.getAttribute('data-category');
-        if (catKey === 'upcoming' || catKey === 'past') {
-          currentStatus = catKey;
-          currentCategory = 'all';
-        } else {
-          currentStatus = 'all';
-          currentCategory = catKey;
-        }
+        currentCategory = btn.getAttribute('data-category');
         renderEvents();
       });
     });
@@ -108,8 +110,6 @@ async function initEventsManager() {
 
   function getFilteredEvents() {
     return activeEvents.filter(item => {
-      if (currentStatus === 'upcoming' && item.type !== 'upcoming') return false;
-      if (currentStatus === 'past' && item.type !== 'past') return false;
       if (currentCategory !== 'all' && item.category !== currentCategory) return false;
 
       if (currentSearch) {
@@ -127,11 +127,11 @@ async function initEventsManager() {
   function renderEvents() {
     const filtered = getFilteredEvents();
     if (countBadge) {
-      countBadge.textContent = `${filtered.length} Event${filtered.length !== 1 ? 's' : ''}`;
+      countBadge.textContent = `${filtered.length} Drive${filtered.length !== 1 ? 's' : ''}`;
     }
 
     if (filtered.length === 0) {
-      const isFiltered = currentSearch !== '' || currentCategory !== 'all' || currentStatus !== 'all';
+      const isFiltered = currentSearch !== '' || currentCategory !== 'all';
       grid.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 3.5rem 1.5rem; background: var(--bg-surface); border: 1px dashed var(--border-color); border-radius: var(--radius-xl);">
           <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">${isFiltered ? '🔍' : '🌱'}</div>
@@ -159,7 +159,6 @@ async function initEventsManager() {
           if (searchInput) searchInput.value = '';
           currentSearch = '';
           currentCategory = 'all';
-          currentStatus = 'all';
           if (filterPillsContainer) {
             filterPillsContainer.querySelectorAll('.filter-pill-btn').forEach(b => {
               b.classList.toggle('active', b.getAttribute('data-category') === 'all');

@@ -72,37 +72,44 @@ To immediately revoke a user's access:
 
 ---
 
-### 2. Creating a New Event
+### 2. Event Lifecycle (Upcoming → Completed → Archived)
+PriJiva uses an automated, timezone-aware lifecycle based on `Asia/Kolkata` (IST):
+
+1. **Upcoming:** A published event scheduled for today or any future date. Displays exclusively on the [Events Directory](impact-events.html) with active RSVP options.
+2. **Completed:** At **00:00 IST the day after the event date**, the drive automatically transitions to **Completed** status and moves exclusively to the [Our Work](our-work.html) showcase.
+3. **Archived:** Completed drives can be manually archived from the admin dashboard when they no longer need to be publicly featured. Archived records remain permanently stored in Firestore.
+
+---
+
+### 3. Creating or Editing an Event
 1. Click the **"+ Create New Event"** button on the top right.
 2. Fill out the event details:
    - **Event Title:** e.g. *“Project WalkRight: Koramangala Pedestrian Crossing Drive”*
    - **Pillar / Category:** Select *Street Action*, *Campus Workshop*, *Civic Audit*, or *Environment & Waste*.
    - **Publication Status:**
      - `Draft`: Keeps the event private on your dashboard for editing.
-     - `Published`: Publishes the event live on the public [Impact & Events](impact-events.html) page immediately.
-     - `Archived`: Keeps past records organized.
-   - **Event Date & Time:** e.g. `Saturday, Nov 14, 2026` & `8:30 AM - 12:00 PM IST`.
+     - `Published`: Publishes the event live on the website.
+   - **Calendar Date (IST):** Select the exact calendar date (`YYYY-MM-DD`). This date controls the automated Upcoming → Completed rollover at 00:00 IST.
+   - **Display Date & Time:** Human-readable string shown to visitors (e.g. `Saturday, Nov 14, 2026` & `8:30 AM - 12:00 PM IST`).
    - **Location:** e.g. `Sony World Signal, Koramangala, Bengaluru`.
    - **Short Description:** 2–3 sentences summarizing the event.
-   - **Cloudinary Image URL:** (See instructions below).
-   - **Google Form RSVP URL:** (See instructions below).
+   - **Event Cover Image:** Choose file to upload directly to Cloudinary via the secure Cloudflare Worker.
+   - **Event Gallery:** Upload up to 5 high-resolution field photos.
+   - **Google Form RSVP URL:** Optional Google Form registration link.
    - **Target Volunteers / Outcome:** e.g. `50 Volunteers Needed` and `5,000 commuters engaged`.
 3. Click **"Save Event"**.
 
 ---
 
-### 3. Adding Cloudinary Image URLs
-PriJiva uses **Cloudinary** for fast and optimized vector/photo delivery without server uploads:
-
-1. Upload your photo to your [Cloudinary Media Library](https://cloudinary.com/).
-2. Copy the public **Delivery URL** (e.g. `https://res.cloudinary.com/your-cloud/image/upload/sample.jpg`).
-3. Paste the URL into the **Cloudinary Image URL** field in the event form.
-4. The live preview box will instantly display the image thumbnail.
-5. If no image URL is provided, PriJiva automatically displays a high-quality civic category illustration.
+### 4. Adding Cloudinary Image URLs & Gallery Photos
+PriJiva uses **Cloudinary** for fast and optimized photo delivery:
+1. Click **"Choose Event Image"** or **"+ Add Event Photos"** to upload files directly (JPG, PNG, WebP ≤ 5 MB).
+2. The browser signs uploads via the secure Cloudflare Worker without exposing secrets.
+3. Verified HTTPS Delivery URL (`https://res.cloudinary.com/...`) is automatically generated and saved.
 
 ---
 
-### 4. Adding Google Form RSVP Links
+### 5. Adding Google Form RSVP Links
 1. Create a registration form in Google Forms.
 2. Copy the shareable short link (e.g. `https://forms.gle/xyz123...`).
 3. Paste the link into the **Google Form RSVP URL** field.
@@ -110,8 +117,10 @@ PriJiva uses **Cloudinary** for fast and optimized vector/photo delivery without
 
 ---
 
-### 5. Quick Actions on the Dashboard
-- **Quick Publish / Unpublish:** Click the **Publish** or **Unpublish** button on any table row to toggle public visibility without opening the full editor.
-- **Filter Tabs:** Use the **All**, **Published**, **Drafts**, and **Archived** buttons to organize your drives.
+### 6. Quick Actions on the Dashboard
+- **Publish / Unpublish:** Click **Publish** to make a draft live, or **Unpublish** to return a published event to draft.
+- **Archive:** Contextual button displayed **only for completed published events**. Hides the event from public pages while preserving the record.
+- **Restore:** Contextual button displayed **only for archived events**. Restores the event back to Published status.
+- **Delete Permanently (Owner Only):** A controlled, destructive action visible **exclusively to the Organization Owner** (`role == 'owner'`). Department heads and non-owner admins do not see this option. Requires explicit confirmation explaining that the Firestore document will be permanently removed and cannot be undone.
+- **Filter Tabs:** Use **All**, **Published**, **Drafts**, and **Archived** buttons to organize your drives.
 - **Search Bar:** Type any keyword (location, title, or category) for instant real-time filtering.
-- **Delete Event:** Click the **Delete** button and confirm to permanently remove an event.

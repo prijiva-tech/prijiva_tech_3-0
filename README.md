@@ -103,9 +103,9 @@ Navigate to:
 
 1. **Home (`/index.html`):** Mission banner, impact metrics, core pillars, featured active drive, interactive civic pledge habit builder, and newsletter CTA.
 2. **About Us (`/about.html`):** Origin story, brand meaning callout ("Pri = Prithvi, Jiva = Life"), 4-step civic model, organizational values, governing body (Secretariat), and organizing body (6 departments).
-3. **Our Work (`/our-work.html`):** Showcase of completed civic drives and public interventions (`status == 'published' && showInOurWork == true`), dynamic category pills, search bar, and direct detail links.
+3. **Our Work (`/our-work.html`):** Showcase of completed civic drives (`status == 'published'` and derived `completed` lifecycle at 00:00 IST following scheduled date), dynamic category pills, search bar, and direct detail links.
 4. **Project Details (`/work.html?id=<eventId>`):** Breadcrumb navigation, impact summary, turnout and milestone metrics, cover image, full narrative, responsive photo gallery (up to 5 photos), and full-screen modal lightbox.
-5. **Impact & Events (`/impact-events.html`):** Complete drives directory (Upcoming & Past), search, Google Form RSVP routing, and volunteer testimonials.
+5. **Impact & Events (`/impact-events.html`):** Complete upcoming drives directory (`status == 'published'` and derived `upcoming` lifecycle), category filters, search, Google Form RSVP routing, and volunteer testimonials.
 6. **Contact Us (`/contact.html`):** Direct contact channels, department directory with one-click inquiry routing, and interactive contact form.
 
 ---
@@ -117,7 +117,7 @@ Navigate to:
   - **Login View:** Clean email and password sign-in.
   - **Access Denied View:** Displayed if a valid Firebase user lacks approved admin rights.
   - **Dashboard View:** Live event metrics (Total, Published, Draft, Archived), search, status filtering, table management, and modal editor.
-- **Event Actions:** Create new events, edit details, toggle publish status with one click, and permanently delete events.
+- **Event Lifecycle Actions:** Create new events, edit details, toggle publish status with one click, contextual **Archive** for completed published events, and **Restore** for archived records. **Delete Permanently** is restricted exclusively to the Organization Owner (`role == 'owner'`) with explicit confirmation.
 
 ---
 
@@ -134,7 +134,7 @@ Navigate to:
 - **Collection `/admins/{uid}`:**
   - Fields: `name` (string), `email` (string), `role` (`"owner"` | `"department_head"`), `department` (string), `active` (boolean), `createdAt` (timestamp).
 - **Collection `/events/{eventId}`:**
-  - Fields: `title` (string), `category` (string), `date` (string), `time` (string), `location` (string), `description` (string), `imageUrl` (string, Cloudinary URL), `gallery` (array of up to 5 Cloudinary URLs), `showInOurWork` (boolean), `rsvpUrl` (string), `attendees` (string), `outcome` (string), `status` (`"published"` | `"draft"` | `"archived"`), `createdAt` (timestamp), `updatedAt` (timestamp), `createdBy` (object: `uid`, `email`, `name`).
+  - Fields: `title` (string), `category` (string), `eventDate` (string, ISO `YYYY-MM-DD` in Asia/Kolkata), `date` (string, human-readable display date), `time` (string), `location` (string), `description` (string), `imageUrl` (string, Cloudinary URL), `gallery` (array of up to 5 Cloudinary URLs), `showInOurWork` (boolean, retained for document compatibility), `rsvpUrl` (string), `attendees` (string), `outcome` (string), `status` (`"published"` | `"draft"` | `"archived"`), `createdAt` (timestamp), `updatedAt` (timestamp), `createdBy` (object: `uid`, `email`, `name`).
 
 ---
 
@@ -146,7 +146,8 @@ Enforced strictly in [`firestore.rules`](firestore.rules):
   - Write: Restricted to Owner (`request.auth.token.email == "podduturpavansai@gmail.com"` or `role == "owner"`).
 - **Events Collection (`/events/{eventId}`):**
   - Public Read: Restricted to documents where `status == "published"`.
-  - Create / Update / Delete: Restricted to active admins (`isActiveAdmin()`).
+  - Create / Update: Restricted to active admins (`isActiveAdmin()`).
+  - Deletion: Restricted exclusively to active Organization Owner (`allow delete: if isOwner();`). Public visitors and department heads cannot delete.
 - **Default Deny:** All other Firestore paths deny read and write.
 
 ---
@@ -186,9 +187,10 @@ Enforced strictly in [`firestore.rules`](firestore.rules):
 
 ---
 
-## 12. "Our Work" Showcase
+## 12. "Our Work" Showcase & Automated Lifecycle
 
-- **Criteria:** Only displays events where `status == "published"` AND `showInOurWork == true`.
+- **Criteria:** Automatically displays events where `status == "published"` and the scheduled event date is before today in `Asia/Kolkata` (`eventDate < todayIST`).
+- **Midnight IST Rollover:** Events automatically transition from Upcoming to Completed at 00:00 IST the day after their scheduled date.
 - **Dynamic Category Filter:** Filter buttons are generated dynamically from categories present in the retrieved completed work data.
 - **Card Badges:** Displays category, date, location, turnout, outcome, and photo count badge (`📷 N Photos`).
 

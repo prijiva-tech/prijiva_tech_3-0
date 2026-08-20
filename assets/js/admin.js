@@ -8,7 +8,10 @@ import {
   getAllAdminEvents,
   createEvent,
   updateEvent,
-  deleteEvent
+  deleteEvent,
+  getTodayIST,
+  isValidEventDate,
+  deriveEventLifecycle
 } from "./firebaseConfig.js";
 
 const firebase = {
@@ -21,7 +24,10 @@ const firebase = {
   getAllAdminEvents,
   createEvent,
   updateEvent,
-  deleteEvent
+  deleteEvent,
+  getTodayIST,
+  isValidEventDate,
+  deriveEventLifecycle
 };
 
 let currentAdmin = null;
@@ -29,6 +35,7 @@ let allEvents = [];
 let activeFilter = 'all';
 let searchQuery = '';
 let editingEventId = null;
+let editingEventStatus = null;
 let currentGalleryUrls = [];
 
 if (document.readyState === 'loading') {
@@ -658,11 +665,34 @@ function renderEventsTable() {
     return;
   }
 
+  const isOwner = Boolean(currentAdmin && currentAdmin.role === 'owner');
+
   tbody.innerHTML = filtered.map(item => {
-    const badgeClass = item.status === 'published' ? 'badge-published' : (item.status === 'draft' ? 'badge-draft' : 'badge-archived');
-    const badgeLabel = item.status ? item.status.toUpperCase() : 'DRAFT';
-    const thumbSrc = item.imageUrl || '../assets/images/illustrations/event-pedestrian.svg';
     const isPublished = item.status === 'published';
+    const isArchived = item.status === 'archived';
+    const isDraft = item.status === 'draft';
+    const lifecycle = deriveEventLifecycle(item);
+
+    let badgeClass = 'badge-draft';
+    let badgeLabel = 'DRAFT';
+    let badgeStyle = '';
+
+    if (isArchived) {
+      badgeClass = 'badge-archived';
+      badgeLabel = 'ARCHIVED';
+    } else if (isDraft) {
+      badgeClass = 'badge-draft';
+      badgeLabel = 'DRAFT';
+    } else if (lifecycle === 'upcoming') {
+      badgeClass = 'badge-published';
+      badgeLabel = 'UPCOMING';
+    } else if (lifecycle === 'completed') {
+      badgeClass = 'badge-completed';
+      badgeLabel = 'COMPLETED';
+      badgeStyle = 'style="background: rgba(99,102,241,0.15); color: #6366f1; border: 1px solid #6366f1;"';
+    }
+
+    const thumbSrc = item.imageUrl || '../assets/images/illustrations/event-pedestrian.svg';
 
     return `
       <tr data-event-id="${item.id}">
@@ -680,11 +710,11 @@ function renderEventsTable() {
           </div>
         </td>
         <td>
-          <span style="font-size: 0.88rem; font-weight: 600;">${escapeHtml(item.date || 'TBD')}</span>
+          <span style="font-size: 0.88rem; font-weight: 600;">${escapeHtml(item.date || item.eventDate || 'TBD')}</span>
           <div style="font-size: 0.78rem; color: var(--text-muted);">${escapeHtml(item.time || '')}</div>
         </td>
         <td>
-          <span class="admin-status-badge ${badgeClass}">${badgeLabel}</span>
+          <span class="admin-status-badge ${badgeClass}" ${badgeStyle}>${badgeLabel}</span>
         </td>
         <td>
           ${item.rsvpUrl ? `<a href="${escapeHtml(item.rsvpUrl)}" target="_blank" style="font-size: 0.8rem; color: var(--color-teal); text-decoration: underline;">Google Form</a>` : '<span style="color: var(--text-muted); font-size: 0.8rem;">None</span>'}
@@ -694,12 +724,31 @@ function renderEventsTable() {
             <button type="button" class="admin-btn-action" onclick="openEditEventModal('${item.id}')">
               Edit
             </button>
-            <button type="button" class="admin-btn-action" onclick="quickToggleStatus('${item.id}', '${isPublished ? 'draft' : 'published'}')">
-              ${isPublished ? 'Unpublish' : 'Publish'}
-            </button>
-            <button type="button" class="admin-btn-action admin-btn-delete" onclick="confirmDeleteEvent('${item.id}', '${escapeHtml(item.title || '')}')">
-              Delete
-            </button>
+            ${isDraft ? `
+              <button type="button" class="admin-btn-action" onclick="quickToggleStatus('${item.id}', 'published')">
+                Publish
+              </button>
+            ` : ''}
+            ${isPublished ? `
+              <button type="button" class="admin-btn-action" onclick="quickToggleStatus('${item.id}', 'draft')">
+                Unpublish
+              </button>
+              ${lifecycle === 'completed' ? `
+                <button type="button" class="admin-btn-action admin-btn-archive" style="color: #64748b; border-color: #cbd5e1;" onclick="archiveEvent('${item.id}', '${escapeHtml(item.title || '')}')">
+                  Archive
+                </button>
+              ` : ''}
+            ` : ''}
+            ${isArchived ? `
+              <button type="button" class="admin-btn-action admin-btn-restore" style="color: var(--color-teal); border-color: var(--color-teal);" onclick="restoreEvent('${item.id}', '${escapeHtml(item.title || '')}')">
+                Restore
+              </button>
+            ` : ''}
+            ${isOwner ? `
+              <button type="button" class="admin-btn-action admin-btn-delete" title="Permanent removal (Owner only)" onclick="confirmDeleteEvent('${item.id}', '${escapeHtml(item.title || '')}')">
+                Delete Permanently
+              </button>
+            ` : ''}
           </div>
         </td>
       </tr>
@@ -710,6 +759,7 @@ function renderEventsTable() {
 /* --- Event Modal Handling (Create / Edit) --- */
 function openEventModal(eventData = null) {
   editingEventId = eventData ? eventData.id : null;
+  editingEventStatus = eventData?.status || null;
   const modal = document.getElementById('admin-event-modal');
   const titleEl = document.getElementById('admin-modal-title');
   const form = document.getElementById('admin-event-form');
@@ -719,6 +769,8 @@ function openEventModal(eventData = null) {
   const progressState = document.getElementById('upload-progress-state');
   const errorAlert = document.getElementById('upload-error-alert');
   const fileInput = document.getElementById('event-file-input');
+  const isoInput = document.getElementById('event-date-iso');
+  const displayDateInput = document.getElementById('event-date');
 
   if (titleEl) {
     titleEl.textContent = editingEventId ? 'Edit PriJiva Event' : 'Create New PriJiva Event';
@@ -731,7 +783,27 @@ function openEventModal(eventData = null) {
   if (form) {
     document.getElementById('event-title').value = eventData?.title || '';
     document.getElementById('event-category').value = eventData?.category || 'Street Action';
-    document.getElementById('event-date').value = eventData?.date || '';
+    
+    // Populate ISO date & Display date
+    let initialIso = eventData?.eventDate || '';
+    if (!initialIso && eventData?.date && isValidEventDate(eventData.date)) {
+      initialIso = eventData.date;
+    }
+    if (isoInput) isoInput.value = initialIso;
+    if (displayDateInput) displayDateInput.value = eventData?.date || '';
+
+    // Auto-generate display date if empty when user selects calendar date
+    if (isoInput && displayDateInput) {
+      isoInput.onchange = () => {
+        if (isoInput.value && !displayDateInput.value) {
+          const [y, m, d] = isoInput.value.split('-');
+          const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+          const monthName = months[parseInt(m, 10) - 1] || m;
+          displayDateInput.value = `${monthName} ${parseInt(d, 10)}, ${y}`;
+        }
+      };
+    }
+
     document.getElementById('event-time').value = eventData?.time || '';
     document.getElementById('event-location').value = eventData?.location || '';
     document.getElementById('event-description').value = eventData?.description || '';
@@ -739,7 +811,26 @@ function openEventModal(eventData = null) {
     document.getElementById('event-rsvp-url').value = eventData?.rsvpUrl || '';
     document.getElementById('event-attendees').value = eventData?.attendees || '';
     document.getElementById('event-outcome').value = eventData?.outcome || '';
-    document.getElementById('event-status').value = eventData?.status || 'published';
+    
+    // Status: If editing an archived event, preserve archived state and disable status selection
+    const statusSelect = document.getElementById('event-status');
+    if (statusSelect) {
+      const tempArchivedOpt = statusSelect.querySelector('option[data-temp-archived]');
+      if (tempArchivedOpt) tempArchivedOpt.remove();
+
+      if (eventData?.status === 'archived') {
+        const opt = document.createElement('option');
+        opt.value = 'archived';
+        opt.textContent = 'Archived (Use "Restore" on dashboard to republish)';
+        opt.setAttribute('data-temp-archived', 'true');
+        statusSelect.appendChild(opt);
+        statusSelect.value = 'archived';
+        statusSelect.disabled = true;
+      } else {
+        statusSelect.disabled = false;
+        statusSelect.value = eventData?.status === 'draft' ? 'draft' : 'published';
+      }
+    }
 
     const showInOurWorkEl = document.getElementById('event-show-in-our-work');
     if (showInOurWorkEl) {
@@ -781,10 +872,32 @@ window.openEditEventModal = function (eventId) {
 async function handleSaveEvent() {
   if (!currentAdmin) return;
 
+  const eventDate = document.getElementById('event-date-iso')?.value?.trim() || '';
+  let displayDate = document.getElementById('event-date')?.value?.trim() || '';
+
+  if (!eventDate || !isValidEventDate(eventDate)) {
+    alert('Please select a valid Calendar Date (YYYY-MM-DD) for this event.');
+    return;
+  }
+
+  if (!displayDate) {
+    const [y, m, d] = eventDate.split('-');
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const monthName = months[parseInt(m, 10) - 1] || m;
+    displayDate = `${monthName} ${parseInt(d, 10)}, ${y}`;
+  }
+
+  // Determine final status: editing an archived event strictly preserves archived status
+  let finalStatus = document.getElementById('event-status')?.value || 'published';
+  if (editingEventStatus === 'archived') {
+    finalStatus = 'archived';
+  }
+
   const eventPayload = {
     title: document.getElementById('event-title').value.trim(),
     category: document.getElementById('event-category').value,
-    date: document.getElementById('event-date').value.trim(),
+    eventDate: eventDate,
+    date: displayDate,
     time: document.getElementById('event-time').value.trim(),
     location: document.getElementById('event-location').value.trim(),
     description: document.getElementById('event-description').value.trim(),
@@ -794,7 +907,7 @@ async function handleSaveEvent() {
     rsvpUrl: document.getElementById('event-rsvp-url').value.trim(),
     attendees: document.getElementById('event-attendees').value.trim(),
     outcome: document.getElementById('event-outcome').value.trim(),
-    status: document.getElementById('event-status').value
+    status: finalStatus
   };
 
   // Strict Validation: Event Image URL must be from res.cloudinary.com
@@ -850,13 +963,45 @@ window.quickToggleStatus = async function (eventId, newStatus) {
   }
 };
 
+window.archiveEvent = async function (eventId, title) {
+  const confirmed = confirm(`Archive "${title || 'this event'}"? It will be hidden from public pages but retained in Firestore archives.`);
+  if (!confirmed) return;
+
+  try {
+    await firebase.updateEvent(eventId, { status: 'archived' });
+    if (window.showToast) window.showToast('Event archived.');
+    await loadAdminEvents();
+  } catch (err) {
+    console.error("Error archiving event:", err);
+    alert('Failed to archive event: ' + err.message);
+  }
+};
+
+window.restoreEvent = async function (eventId, title) {
+  try {
+    await firebase.updateEvent(eventId, { status: 'published' });
+    if (window.showToast) window.showToast('Event restored to Published.');
+    await loadAdminEvents();
+  } catch (err) {
+    console.error("Error restoring event:", err);
+    alert('Failed to restore event: ' + err.message);
+  }
+};
+
 window.confirmDeleteEvent = async function (eventId, title) {
-  const confirmed = confirm(`Are you sure you want to permanently delete "${title}"? This cannot be undone.`);
+  if (!currentAdmin || currentAdmin.role !== 'owner') {
+    alert('Permission Denied: Only the Organization Owner can permanently delete event records.');
+    return;
+  }
+
+  const confirmed = confirm(
+    `WARNING: Are you sure you want to permanently delete "${title || 'this event'}"?\n\nThis will permanently remove the Firestore document from the database and cannot be undone.`
+  );
   if (!confirmed) return;
 
   try {
     await firebase.deleteEvent(eventId);
-    if (window.showToast) window.showToast('Event deleted.');
+    if (window.showToast) window.showToast('Event permanently deleted.');
     await loadAdminEvents();
   } catch (err) {
     console.error("Error deleting event:", err);

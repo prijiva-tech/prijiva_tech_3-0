@@ -135,15 +135,15 @@ Locate `events` in `assets/js/siteData.js`. To add a new drive, copy and paste t
   id: "evt-007",                                                // Unique ID
   title: "Your Civic Drive Title Here",
   category: "Street Action",                                     // "Street Action" | "Campus Workshop" | "Civic Audit" | "Environment & Waste"
-  type: "upcoming",                                             // "upcoming" or "past"
-  date: "Oct 25, 2026",
+  eventDate: "2026-10-25",                                      // ISO Date (YYYY-MM-DD) in Asia/Kolkata
+  date: "Oct 25, 2026",                                         // Display date string
   time: "9:00 AM - 1:00 PM",
   location: "Your Location / Junction Name",
   city: "Bengaluru",
-  badge: "Upcoming Drive",
+  badge: "Street Action",
   image: "assets/images/illustrations/event-pedestrian.svg",    // Path to event photo or SVG
   description: "Brief 2-3 sentence overview of what volunteers will do.",
-  attendees: "100 Volunteers Needed",                           // or "120 Participated" for past drives
+  attendees: "100 Volunteers Needed",                           // or turnout figure for past drives
   outcome: "Expected or verified outcome of the drive."
 }
 ```

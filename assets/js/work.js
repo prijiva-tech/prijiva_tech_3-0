@@ -24,13 +24,20 @@ async function initOurWorkShowcase() {
 
   if (!grid) return;
 
-  // Initial data from static SITE_DATA (filtered to showInOurWork === true)
+  // Initial data from static SITE_DATA (filtered to completed events)
   let allWork = (window.SITE_DATA?.events || [])
-    .filter(e => e.showInOurWork === true || (e.showInOurWork !== false && e.type === 'past'))
+    .filter(e => {
+      const derive = window.PriJivaFirebase?.deriveEventLifecycle;
+      if (typeof derive === 'function') {
+        return derive(e) === 'completed';
+      }
+      return e.type === 'past' && e.status !== 'draft' && e.status !== 'archived';
+    })
     .map(e => ({
       id: e.id,
       title: e.title,
       category: e.category || 'Street Action',
+      eventDate: e.eventDate || '',
       date: e.date || '',
       time: e.time || '',
       location: e.location || '',
@@ -56,13 +63,15 @@ async function initOurWorkShowcase() {
       try {
         const firestoreEvents = await window.PriJivaFirebase.getPublishedEvents();
         if (firestoreEvents) {
-          // Strictly filter: status == 'published' AND showInOurWork == true
+          const derive = window.PriJivaFirebase.deriveEventLifecycle || (d => 'upcoming');
+          // Filter strictly for Completed events (published + eventDate < todayIST)
           const liveWork = firestoreEvents
-            .filter(doc => doc.showInOurWork === true)
+            .filter(doc => derive(doc) === 'completed')
             .map(doc => ({
               id: doc.id,
               title: doc.title,
               category: doc.category || 'Street Action',
+              eventDate: doc.eventDate || '',
               date: doc.date || '',
               time: doc.time || '',
               location: doc.location || '',
@@ -74,9 +83,7 @@ async function initOurWorkShowcase() {
               showInOurWork: true
             }));
 
-          if (liveWork.length > 0) {
-            allWork = liveWork;
-          }
+          allWork = liveWork;
           buildCategoryFilters();
           renderWorkGrid();
         }
@@ -267,8 +274,10 @@ async function initProjectDetailView() {
     return;
   }
 
+  const derive = window.PriJivaFirebase?.deriveEventLifecycle || (d => 'upcoming');
+
   // First check static SITE_DATA.events
-  let project = (window.SITE_DATA?.events || []).find(e => e.id === projectId && e.status !== 'draft' && e.showInOurWork === true);
+  let project = (window.SITE_DATA?.events || []).find(e => e.id === projectId && e.status !== 'draft' && e.status !== 'archived' && derive(e) === 'completed');
 
   // Attempt to fetch from Firestore
   for (let i = 0; i < 15; i++) {
@@ -279,22 +288,30 @@ async function initProjectDetailView() {
   if (window.PriJivaFirebase?.getPublishedEventById) {
     try {
       const doc = await window.PriJivaFirebase.getPublishedEventById(projectId);
-      if (doc && doc.status === 'published' && doc.showInOurWork === true) {
-        project = {
-          id: doc.id,
-          title: doc.title,
-          category: doc.category || 'Street Action',
-          date: doc.date || '',
-          time: doc.time || '',
-          location: doc.location || '',
-          description: doc.description || '',
-          imageUrl: doc.imageUrl || 'assets/images/illustrations/event-pedestrian.svg',
-          gallery: Array.isArray(doc.gallery) ? doc.gallery : [],
-          attendees: doc.attendees || '',
-          outcome: doc.outcome || '',
-          rsvpUrl: doc.rsvpUrl || '',
-          showInOurWork: doc.showInOurWork
-        };
+      if (doc && doc.status === 'published') {
+        const lifecycle = (window.PriJivaFirebase.deriveEventLifecycle || derive)(doc);
+        if (lifecycle === 'completed') {
+          project = {
+            id: doc.id,
+            title: doc.title,
+            category: doc.category || 'Street Action',
+            eventDate: doc.eventDate || '',
+            date: doc.date || '',
+            time: doc.time || '',
+            location: doc.location || '',
+            description: doc.description || '',
+            imageUrl: doc.imageUrl || 'assets/images/illustrations/event-pedestrian.svg',
+            gallery: Array.isArray(doc.gallery) ? doc.gallery : [],
+            attendees: doc.attendees || '',
+            outcome: doc.outcome || '',
+            rsvpUrl: doc.rsvpUrl || '',
+            showInOurWork: true
+          };
+        } else {
+          // Event is upcoming (not yet completed)
+          renderNotFound(container, 'This civic drive is currently scheduled as an upcoming event. Visit our Events Directory to volunteer or view details!', 'impact-events.html', 'View Upcoming Drives →');
+          return;
+        }
       }
     } catch (err) {
       console.warn("Firestore project fetch error:", err);
@@ -302,7 +319,7 @@ async function initProjectDetailView() {
   }
 
   if (!project) {
-    renderNotFound(container, 'The requested project could not be found or has not been published yet.');
+    renderNotFound(container, 'The requested project could not be found or is not available publicly.');
     return;
   }
 
@@ -310,14 +327,14 @@ async function initProjectDetailView() {
   renderProjectDetail(container, project);
 }
 
-function renderNotFound(container, message) {
+function renderNotFound(container, message, ctaLink = 'our-work.html', ctaText = '← Back to Our Work') {
   container.innerHTML = `
     <div style="text-align: center; padding: 4rem 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); max-width: 600px; margin: 3rem auto;">
       <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
-      <h2 style="margin-bottom: 0.5rem; font-size: 1.5rem;">Project Not Found</h2>
+      <h2 style="margin-bottom: 0.5rem; font-size: 1.5rem;">Project Not Available</h2>
       <p style="color: var(--text-muted); margin-bottom: 1.5rem;">${escapeHtml(message)}</p>
-      <a href="our-work.html" class="btn btn-teal">
-        ← Back to Our Work
+      <a href="${escapeHtml(ctaLink)}" class="btn btn-teal">
+        ${escapeHtml(ctaText)}
       </a>
     </div>
   `;
