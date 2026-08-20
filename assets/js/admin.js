@@ -689,7 +689,7 @@ function renderEventsTable() {
     } else if (lifecycle === 'completed') {
       badgeClass = 'badge-completed';
       badgeLabel = 'COMPLETED';
-      badgeStyle = 'style="background: rgba(99,102,241,0.15); color: #6366f1; border: 1px solid #6366f1;"';
+      badgeStyle = '';
     }
 
     const thumbSrc = item.imageUrl || '../assets/images/illustrations/event-pedestrian.svg';

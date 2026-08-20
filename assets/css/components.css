@@ -576,7 +576,7 @@ textarea.form-control {
 }
 
 .cta-banner p {
-  color: #e0e7ff;
+  color: var(--color-indigo-subtle);
   max-width: 600px;
   margin: 0 auto 1.75rem auto;
   font-size: 1.05rem;
@@ -592,8 +592,8 @@ textarea.form-control {
 }
 
 [data-theme="dark"] .cta-banner {
-  background: #1e1b4b;
-  border: 1px solid #312e81;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
 }
 
 /* --- Clean Toast Notifications --- */
@@ -636,15 +636,15 @@ textarea.form-control {
 
 /* --- Minimal Clean Footer --- */
 .site-footer {
-  background: #0f172a;
-  color: #f8fafc;
+  background: #0d1712;
+  color: #f4f7f4;
   padding-top: 4rem;
   padding-bottom: 2rem;
-  border-top: 1px solid #1e293b;
+  border-top: 1px solid #1e2e24;
 }
 
 .site-footer p {
-  color: #94a3b8;
+  color: #8fa394;
   font-size: 0.92rem;
   line-height: 1.6;
 }
@@ -690,7 +690,7 @@ textarea.form-control {
 }
 
 .footer-link {
-  color: #94a3b8;
+  color: #8fa394;
   font-weight: 500;
   font-size: 0.9rem;
   transition: color var(--transition-fast);
@@ -714,8 +714,8 @@ textarea.form-control {
   width: var(--tap-target-min);
   height: var(--tap-target-min);
   border-radius: var(--radius-pill);
-  background: #1e293b;
-  color: #94a3b8;
+  background: #182620;
+  color: #8fa394;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -731,7 +731,7 @@ textarea.form-control {
 }
 
 .footer-bottom {
-  border-top: 1px solid #1e293b;
+  border-top: 1px solid #1e2e24;
   padding-top: 1.5rem;
   display: flex;
   align-items: center;
@@ -739,5 +739,5 @@ textarea.form-control {
   flex-wrap: wrap;
   gap: 1rem;
   font-size: 0.82rem;
-  color: #64748b;
+  color: #6b7a6f;
 }

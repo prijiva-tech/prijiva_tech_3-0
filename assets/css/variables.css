@@ -1,51 +1,52 @@
 /* ====================================================================
-   PRIJIVA DESIGN SYSTEM - VARIABLES & TOKENS (REFINED)
-   Colors: Deep Indigo, Bright Teal, Watermelon Pink, Soft Lemon, Mist White, Charcoal
+   PRIJIVA DESIGN SYSTEM - VARIABLES & TOKENS (NATURE-INSPIRED)
+   Colors: Deep Forest, Botanic Jade, Terracotta Clay, Warm Ochre, Mineral Neutrals
    Typography, Spacing, Radii, Shadows, Transitions, Accessible Touch Targets
    ==================================================================== */
 
 :root {
-  /* --- Primary Palette Tokens --- */
-  --color-indigo: #312e81;          /* Deep Indigo - Primary Headings & Brand */
-  --color-indigo-light: #4338ca;
-  --color-indigo-dark: #1e1b4b;
-  --color-indigo-subtle: #e0e7ff;
+  /* --- Primary Palette Tokens (Nature-Inspired Refinement) --- */
+  /* Deep Forest — headings, brand, indigo compatibility */
+  --color-indigo: #143828;
+  --color-indigo-light: #1b4d37;
+  --color-indigo-dark: #0d261b;
+  --color-indigo-subtle: #e8f3ee;
 
-  --color-teal: #14b8a6;            /* Bright Teal - Primary Actions & Active Highlights */
-  --color-teal-hover: #0d9488;
-  --color-teal-light: #ccfbf1;
-  --color-teal-glow: rgba(20, 184, 166, 0.2);
+  /* Botanic Jade — primary CTA and teal compatibility */
+  --color-teal: #1b7a4d;
+  --color-teal-hover: #14643f;
+  --color-teal-light: #eaf7f0;
+  --color-teal-glow: rgba(27, 122, 77, 0.22);
 
-  --color-pink: #f43f5e;            /* Watermelon Pink - Emphasis & Secondary CTAs */
-  --color-pink-hover: #e11d48;
-  --color-pink-light: #ffe4e6;
+  /* Terracotta — emphasis and pink compatibility */
+  --color-pink: #d95338;
+  --color-pink-hover: #b93822;
+  --color-pink-light: #fdf2f0;
 
-  --color-lemon: #fde68a;           /* Soft Lemon - Subtle Accent Backgrounds */
-  --color-lemon-light: #fef3c7;
-  --color-lemon-dark: #b45309;
+  /* Ochre — warm accent and lemon compatibility */
+  --color-lemon: #fde047;
+  --color-lemon-light: #fef9c3;
+  --color-lemon-dark: #854d0e;
 
-  /* --- Neutrals & Surfaces --- */
-  --bg-body: #f8fafc;               /* Mist White */
-  --bg-surface: #ffffff;            /* Pure White */
-  --bg-muted: #f1f5f9;              /* Light Mist */
-  --bg-subtle: #e2e8f0;
+  /* Organic mineral neutrals */
+  --bg-body: #f8faf7;
+  --bg-surface: #ffffff;
+  --bg-muted: #eff3ee;
+  --bg-subtle: #e1e7e0;
+  --border-color: #e1e7e0;
+  --border-hover: #ccd6cb;
+  --border-focus: #1b7a4d;
 
-  /* --- Typography Colors --- */
-  --text-primary: #1f2937;          /* Charcoal Body Text */
-  --text-headings: #312e81;         /* Deep Indigo Headings */
-  --text-secondary: #4b5563;        /* Slate Muted Text */
-  --text-muted: #6b7280;            /* Soft Grey Metadata */
+  --text-primary: #1c241f;
+  --text-headings: #143828;
+  --text-secondary: #47544b;
+  --text-muted: #6b7a6f;
   --text-inverse: #ffffff;
 
-  /* --- Borders & Dividers --- */
-  --border-color: #e2e8f0;          /* Fine Subtle Border */
-  --border-hover: #cbd5e1;
-  --border-focus: #14b8a6;
-
   /* --- Restrained Modern Shadows --- */
-  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-hover: 0 8px 20px rgba(49, 46, 129, 0.07), 0 2px 6px rgba(0, 0, 0, 0.03);
+  --shadow-subtle: 0 1px 3px rgba(20, 56, 40, 0.04), 0 1px 2px rgba(20, 56, 40, 0.02);
+  --shadow-card: 0 2px 8px rgba(20, 56, 40, 0.04), 0 1px 2px rgba(20, 56, 40, 0.02);
+  --shadow-hover: 0 8px 20px rgba(20, 56, 40, 0.08), 0 2px 6px rgba(20, 56, 40, 0.03);
 
   /* --- Modern Typography Families --- */
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -77,25 +78,25 @@
   --header-height: 72px;
 }
 
-/* --- Clean High-Contrast Dark Mode --- */
+/* --- Clean High-Contrast Nature Dark Mode --- */
 [data-theme="dark"] {
-  --bg-body: #0f172a;
-  --bg-surface: #1e293b;
-  --bg-muted: #334155;
-  --bg-subtle: #475569;
+  --bg-body: #0d1712;
+  --bg-surface: #15221b;
+  --bg-muted: #203329;
+  --bg-subtle: #2d4538;
 
-  --text-primary: #f8fafc;
-  --text-headings: #e0e7ff;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
+  --text-primary: #f4f7f4;
+  --text-headings: #e2f1e9;
+  --text-secondary: #c2d1c6;
+  --text-muted: #8fa394;
 
-  --border-color: #334155;
-  --border-hover: #475569;
-  --border-focus: #14b8a6;
+  --border-color: #24382d;
+  --border-hover: #334d3f;
+  --border-focus: #1b7a4d;
 
-  --color-indigo-subtle: rgba(99, 102, 241, 0.15);
+  --color-indigo-subtle: rgba(27, 122, 77, 0.18);
 
-  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.25);
-  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.4);
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
