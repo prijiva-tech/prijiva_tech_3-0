@@ -734,13 +734,13 @@ function renderEventsTable() {
                 Unpublish
               </button>
               ${lifecycle === 'completed' ? `
-                <button type="button" class="admin-btn-action admin-btn-archive" style="color: #64748b; border-color: #cbd5e1;" onclick="archiveEvent('${item.id}', '${escapeHtml(item.title || '')}')">
+                <button type="button" class="admin-btn-action admin-btn-archive" onclick="archiveEvent('${item.id}', '${escapeHtml(item.title || '')}')">
                   Archive
                 </button>
               ` : ''}
             ` : ''}
             ${isArchived ? `
-              <button type="button" class="admin-btn-action admin-btn-restore" style="color: var(--color-teal); border-color: var(--color-teal);" onclick="restoreEvent('${item.id}', '${escapeHtml(item.title || '')}')">
+              <button type="button" class="admin-btn-action admin-btn-restore" onclick="restoreEvent('${item.id}', '${escapeHtml(item.title || '')}')">
                 Restore
               </button>
             ` : ''}

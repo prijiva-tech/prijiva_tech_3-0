@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCivicPledge();
   initCommonLinks();
   initAccordions();
+  initFloatingJoinCTA();
 });
 
 /* --- Theme Management (Dark / Light Mode) --- */
@@ -153,11 +154,11 @@ function showToast(message, type = 'info', duration = 3500) {
   
   let iconSvg = '';
   if (type === 'success') {
-    iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+    iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-teal, #1b7a4d)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
   } else if (type === 'error') {
-    iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+    iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-pink, #d95338)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
   } else {
-    iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#312e81" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`;
+    iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-indigo, #143828)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`;
   }
 
   toast.innerHTML = `
@@ -363,7 +364,7 @@ function initCivicPledge() {
         <div style="margin-bottom: 0.5rem;">
           <h4 style="color: #ffffff; margin: 0; font-size: 1.2rem;">Committed to ${selectedPledges.size} Civic Habit${selectedPledges.size !== 1 ? 's' : ''}</h4>
         </div>
-        <p style="color: #cbd5e1; font-size: 0.92rem; max-width: 480px; margin: 0 auto 1.25rem auto;">
+        <p style="color: var(--color-indigo-subtle, #e8f3ee); font-size: 0.92rem; max-width: 480px; margin: 0 auto 1.25rem auto;">
           Every small action makes our shared spaces safer and more respectful.
         </p>
         <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
@@ -465,8 +466,111 @@ function initAccordions() {
   });
 }
 
+/* --- Persistent Nature-Inspired Floating "Join Us" CTA --- */
+function initFloatingJoinCTA() {
+  // 1. Guard against Admin Portal injection
+  if (
+    window.location.pathname.includes('/admin') ||
+    document.body.classList.contains('admin-body') ||
+    document.querySelector('.admin-view') ||
+    document.querySelector('.admin-body')
+  ) {
+    return;
+  }
+
+  // 2. Check session dismissal persistence
+  if (sessionStorage.getItem('prijiva-join-cta-dismissed') === 'true') {
+    return;
+  }
+
+  // 3. Confirm volunteer-modal exists on page
+  const volunteerModal = document.getElementById('volunteer-modal');
+  if (!volunteerModal) {
+    return;
+  }
+
+  // Avoid duplicate injection
+  if (document.getElementById('floating-join-cta')) {
+    return;
+  }
+
+  // 4. Construct floating CTA element
+  const ctaContainer = document.createElement('div');
+  ctaContainer.className = 'floating-join-cta';
+  ctaContainer.id = 'floating-join-cta';
+  ctaContainer.setAttribute('role', 'region');
+  ctaContainer.setAttribute('aria-label', 'Volunteer invitation');
+
+  ctaContainer.innerHTML = `
+    <button type="button" class="floating-join-btn" aria-haspopup="dialog" aria-label="Join PriJiva as a volunteer">
+      <span class="floating-join-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+        </svg>
+      </span>
+      <span class="floating-join-text">
+        <span class="floating-join-title">Join PriJiva</span>
+        <span class="floating-join-subtitle">Volunteer with us →</span>
+      </span>
+    </button>
+    <button type="button" class="floating-join-dismiss" aria-label="Dismiss volunteer badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  `;
+
+  document.body.appendChild(ctaContainer);
+
+  // 5. Direct click handler for volunteer modal
+  const joinBtn = ctaContainer.querySelector('.floating-join-btn');
+  if (joinBtn) {
+    joinBtn.addEventListener('click', () => {
+      if (typeof openModal === 'function' && document.getElementById('volunteer-modal')) {
+        openModal('volunteer-modal');
+      }
+    });
+  }
+
+  // 6. Direct click handler for dismissal (persisted in sessionStorage)
+  const dismissBtn = ctaContainer.querySelector('.floating-join-dismiss');
+  if (dismissBtn) {
+    dismissBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sessionStorage.setItem('prijiva-join-cta-dismissed', 'true');
+      ctaContainer.classList.remove('visible');
+      setTimeout(() => {
+        if (ctaContainer.parentNode) ctaContainer.parentNode.removeChild(ctaContainer);
+      }, 300);
+    });
+  }
+
+  // 7. Scroll reveal listener (shows after scrolling ~300px)
+  let isRevealed = false;
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      if (!isRevealed) {
+        isRevealed = true;
+        ctaContainer.classList.add('visible');
+      }
+    } else {
+      if (isRevealed) {
+        isRevealed = false;
+        ctaContainer.classList.remove('visible');
+      }
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+}
+
 // Global Exports
 window.showToast = showToast;
 window.openModal = openModal;
 window.closeModal = closeModal;
 window.openRsvpModal = openRsvpModal;
+window.initFloatingJoinCTA = initFloatingJoinCTA;
+

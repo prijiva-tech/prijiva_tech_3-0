@@ -67,6 +67,13 @@ function canAdminDeleteEvent(adminRecord) {
   return adminRecord.role === 'owner';
 }
 
+function shouldInjectFloatingJoinCTA(pathname, hasVolunteerModal, isDismissed) {
+  if (pathname.includes('/admin')) return false;
+  if (isDismissed) return false;
+  if (!hasVolunteerModal) return false;
+  return true;
+}
+
 const tests = [
   ['Valid ISO date', isValidEventDate('2026-08-20'), true],
   ['Invalid leap year date', isValidEventDate('2026-02-29'), false],
@@ -95,7 +102,13 @@ const tests = [
   ['Owner deletion authorized', canAdminDeleteEvent({ role: 'owner', active: true }), true],
   ['Inactive owner deletion denied', canAdminDeleteEvent({ role: 'owner', active: false }), false],
   ['Department Head deletion denied', canAdminDeleteEvent({ role: 'department_head', active: true }), false],
-  ['Non-logged-in user deletion denied', canAdminDeleteEvent(null), false]
+  ['Non-logged-in user deletion denied', canAdminDeleteEvent(null), false],
+
+  ['Floating CTA injects on public page', shouldInjectFloatingJoinCTA('/about.html', true, false), true],
+  ['Floating CTA never injects on admin portal', shouldInjectFloatingJoinCTA('/admin/index.html', true, false), false],
+  ['Floating CTA never injects on admin root', shouldInjectFloatingJoinCTA('/admin', true, false), false],
+  ['Floating CTA suppressed when dismissed in session', shouldInjectFloatingJoinCTA('/index.html', true, true), false],
+  ['Floating CTA suppressed when volunteer modal absent', shouldInjectFloatingJoinCTA('/custom.html', false, false), false]
 ];
 
 let allPassed = true;

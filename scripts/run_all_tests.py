@@ -18,6 +18,9 @@ TEST_SCRIPTS = [
     ("Static Assets & Endpoints (HTTP 200)", "scripts/verify_assets.py"),
     ("About Page Redesign & Brand Semantics", "scripts/verify_about_redesign.py"),
     ("Our Work Showcase & Gallery Lightbox", "scripts/verify_our_work.py"),
+    ("HTML & Local Asset Paths Integrity", "scripts/validate_paths.py"),
+    ("Event Lifecycle & RBAC Unit Logic", "scripts/test_lifecycle_unit.js"),
+    ("Join Us Floating CTA & Public Injection", "scripts/test_floating_cta_dom.js"),
 ]
 
 def main():
@@ -43,8 +46,9 @@ def main():
 
         start_time = time.time()
         try:
+            cmd = ['node', script_path] if script_name.endswith('.js') else [sys.executable, script_path]
             proc = subprocess.run(
-                [sys.executable, script_path],
+                cmd,
                 cwd=root_dir,
                 capture_output=True,
                 text=True,
