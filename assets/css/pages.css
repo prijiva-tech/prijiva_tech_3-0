@@ -716,7 +716,7 @@
 .secretariat-compact-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem 1.5rem;
+  gap: 1.15rem 1.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -731,49 +731,60 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1rem 1.25rem;
+  padding: 1.15rem 1.25rem;
   display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  transition: border-color var(--transition-fast);
+  align-items: flex-start;
+  gap: 1rem;
+  transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .secretariat-compact-item:hover {
   border-color: var(--color-teal);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 .secretariat-compact-avatar {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid var(--border-color);
   flex-shrink: 0;
   background: var(--bg-muted);
+  margin-top: 0.15rem;
 }
 
 .secretariat-compact-role {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--color-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+}
+
+[data-theme="dark"] .secretariat-compact-role {
+  color: var(--color-teal);
+}
+
+.secretariat-compact-name {
   font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 1.12rem;
+  font-weight: 800;
   color: var(--color-indigo);
   line-height: 1.2;
 }
 
-[data-theme="dark"] .secretariat-compact-role {
-  color: #e0e7ff;
-}
-
-.secretariat-compact-name {
-  font-size: 0.85rem;
-  color: var(--color-teal);
-  font-weight: 600;
+[data-theme="dark"] .secretariat-compact-name {
+  color: #ffffff;
 }
 
 .secretariat-compact-duty {
   font-size: 0.82rem;
   color: var(--text-secondary);
-  margin-top: 0.2rem;
-  line-height: 1.35;
+  margin-top: 0.35rem;
+  line-height: 1.4;
 }
 
 /* 6. Organizing Body - Clean Accordion Directory */
@@ -927,6 +938,14 @@
   border-radius: 50%;
   border: 1px solid var(--border-color);
   flex-shrink: 0;
+}
+
+/* Team & Leadership Email Display Toggle - Hidden for now */
+.accordion-lead-email,
+.leadership-member-contact,
+.team-email-row,
+.team-email-copy-btn {
+  display: none !important;
 }
 
 /* --- IMPACT & EVENTS PAGE --- */

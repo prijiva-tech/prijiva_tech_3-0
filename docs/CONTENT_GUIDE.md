@@ -154,13 +154,13 @@ Locate `events` in `assets/js/siteData.js`. To add a new drive, copy and paste t
 
 All governance roles are managed in the `governingBody` object within `assets/js/siteData.js`.
 
-### Board / Secretary
+### Board / Secretary & Founder
 Locate `governingBody.boardSecretary`:
 ```javascript
 boardSecretary: {
   name: "Poddutur Pavan Sai",
   designation: "Board Secretary & Founder",
-  photo: "assets/images/placeholders/founder-placeholder.svg", // Or real photo path
+  photo: "assets/images/placeholders/founder-placeholder.svg",
   roleDescription: "Guides overall institutional vision...",
   bioSummary: "Student changemaker and founder of PriJiva...",
   email: "founder@prijiva.org",
@@ -170,60 +170,61 @@ boardSecretary: {
 }
 ```
 
-### Secretariat Roles (Executive, General, Operations, Outreach, Strategy)
+### Governing Body Portfolios (6 Portfolios: General, Development, Administrative, Communication Outreach, Executive, Finance)
 Locate `governingBody.secretaries` in `assets/js/siteData.js`:
 ```javascript
 {
-  id: "sec-exec",
-  title: "Executive Secretary",
-  name: "Actual Leader Name",                    // Replace placeholder
-  photo: "assets/images/avatars/avatar-1.svg",   // Or real leader photo
-  roleDescription: "Supports executive decision-making...",
-  bioSummary: "Coordinates cross-functional milestones...",
-  email: "exec.secretary@prijiva.org",
-  linkedin: "https://linkedin.com/in/actual-profile"
+  id: "sec-general",
+  title: "General Secretary",
+  primaryLead: "Gayathri",
+  associate: "Monika",
+  name: "Gayathri & Monika",
+  photo: "assets/images/avatars/avatar-1.svg",
+  roleDescription: "Oversees organizational coordination, compliance, institutional records, and governance processes.",
+  bioSummary: "Leads governance operations, organizational archives, compliance, and team alignment.",
+  email: "general.secretary@prijiva.org",
+  linkedin: "https://linkedin.com/company/prijiva"
 }
 ```
 
 ---
 
-## 5. Updating Organizing Body (Departments, Heads & Sub-Heads)
+## 5. Updating Organizing Body (6 Teams / Domains)
 
-Locate `organizingBody.departments` in `assets/js/siteData.js`. Each of the six functional departments contains editable Head and Sub-Head objects:
+Locate `organizingBody.departments` in `assets/js/siteData.js`. The six domains are: **Content Media**, **Documentation**, **Tech**, **Events Planning**, **Outreach**, and **People Management**:
 
 ```javascript
 {
-  id: "dept-events",
-  departmentName: "Events Planning & Support",
-  description: "Plans, coordinates, and supports PriJiva events...",
-  tagColor: "teal", // "teal" | "indigo" | "pink" | "lemon"
+  id: "dept-media",
+  departmentName: "Content Media",
+  description: "Creates stories, graphics, videos, social-media content, campaign material, and media documentation.",
+  tagColor: "lemon", // "teal" | "indigo" | "pink" | "lemon"
+  members: ["Madhav", "Harish"],
   
-  // Department Head
-  head: {
-    name: "Actual Head Name",
-    role: "Department Head",
+  lead: {
+    name: "Madhav",
+    role: "Team Leader",
     photo: "assets/images/avatars/avatar-1.svg",
-    bio: "Oversees event calendar, drive schedules, and coordination.",
-    email: "events.head@prijiva.org",
-    phone: "+91 98765 XXXXX",
-    linkedin: "https://linkedin.com/in/head-profile"
+    bio: "Shapes PriJiva's creative visual voice, campaigns, and viral civic storytelling.",
+    email: "media@prijiva.org",
+    phone: "+91 98765 43210",
+    linkedin: "https://linkedin.com/company/prijiva"
   },
   
-  // Department Sub-Head
-  subHead: {
-    name: "Actual Sub-Head Name",
-    role: "Department Sub-Head",
+  associate: {
+    name: "Harish",
+    role: "Team Leader",
     photo: "assets/images/avatars/avatar-2.svg",
-    bio: "Assists with drive-day coordination and volunteer rosters.",
-    email: "events.subhead@prijiva.org",
-    phone: "+91 98765 XXXXX",
-    linkedin: "https://linkedin.com/in/subhead-profile"
+    bio: "Coordinates ground photography, reels, and digital campaign collateral.",
+    email: "media@prijiva.org",
+    phone: "+91 98765 43210",
+    linkedin: "https://linkedin.com/company/prijiva"
   },
   
   responsibilities: [
-    "Annual and monthly civic drive calendars",
-    "Volunteer scheduling, safety briefings, and permissions",
-    "On-ground logistics, equipment, and crowd coordination"
+    "Social media campaigns, reels, and civic infographics",
+    "Street banners, posters, and campaign print collateral",
+    "Live photo and video documentation of all drives"
   ]
 }
 ```

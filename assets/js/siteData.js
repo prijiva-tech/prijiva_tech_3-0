@@ -120,7 +120,7 @@ const SITE_DATA = {
   governingBody: {
     sectionIntro: "The Governing Body provides leadership, direction, accountability, and strategic coordination across PriJiva.",
     
-    // Primary Leadership: Board / Secretary
+    // Primary Leadership: Board / Founder
     boardSecretary: {
       name: "Poddutur Pavan Sai",
       designation: "Board Secretary & Founder",
@@ -133,57 +133,191 @@ const SITE_DATA = {
       leadershipMessage: "“Civic sense is not an abstract theory in a textbook; it is the daily muscle memory of respecting the shared spaces we inherit together.”"
     },
 
-    // Five Secretariat Roles
+    // Six Governing Body Portfolios
     secretaries: [
-      {
-        id: "sec-exec",
-        title: "Executive Secretary",
-        name: "Secretariat Desk",
-        photo: "assets/images/avatars/avatar-1.svg",
-        roleDescription: "Supports executive decision-making, coordinates leadership priorities, and helps ensure the organization’s vision translates into action.",
-        bioSummary: "Coordinates cross-functional milestones, supports strategic execution, and aligns executive deliverables.",
-        email: "hello@prijiva.org",
-        linkedin: "https://linkedin.com/company/prijiva"
-      },
       {
         id: "sec-general",
         title: "General Secretary",
-        name: "Secretariat Desk",
-        photo: "assets/images/avatars/avatar-2.svg",
-        roleDescription: "Oversees overall coordination, records, internal communication, and the smooth functioning of PriJiva’s governance processes.",
-        bioSummary: "Manages organizational compliance, meeting records, formal documentation, and team communications.",
-        email: "hello@prijiva.org",
-        linkedin: "https://linkedin.com/company/prijiva"
-      },
-      {
-        id: "sec-ops",
-        title: "Operations Secretary",
-        name: "Secretariat Desk",
-        photo: "assets/images/avatars/avatar-3.svg",
-        roleDescription: "Leads operational planning, resource coordination, timelines, and on-ground execution support.",
-        bioSummary: "Oversees field safety protocols, equipment logistics, and execution timelines across regional drives.",
-        email: "hello@prijiva.org",
-        linkedin: "https://linkedin.com/company/prijiva"
-      },
-      {
-        id: "sec-outreach",
-        title: "Outreach & Partnerships Secretary",
-        name: "Secretariat Desk",
+        primaryLead: "Gayathri",
+        associate: "Monika",
+        name: "Gayathri & Monika",
         photo: "assets/images/avatars/avatar-1.svg",
-        roleDescription: "Builds relationships with communities, educational institutions, partner organizations, and supporters.",
-        bioSummary: "Leads strategic institutional partnerships, campus outreach networks, and civic alliance building.",
-        email: "hello@prijiva.org",
+        roleDescription: "Oversees organizational coordination, compliance, institutional records, and governance processes.",
+        bioSummary: "Leads governance operations, organizational archives, compliance, and team alignment.",
+        email: "general.secretary@prijiva.org",
         linkedin: "https://linkedin.com/company/prijiva"
       },
       {
-        id: "sec-strategy",
-        title: "Strategy & Communications Secretary",
-        name: "Secretariat Desk",
+        id: "sec-development",
+        title: "Development Secretary",
+        primaryLead: "Reethika",
+        associate: "Raveena",
+        name: "Reethika & Raveena",
         photo: "assets/images/avatars/avatar-2.svg",
-        roleDescription: "Shapes PriJiva’s strategic direction, public communication, campaigns, and brand voice.",
-        bioSummary: "Drives media advocacy roadmaps, public communications, and creative campaign messaging.",
-        email: "hello@prijiva.org",
+        roleDescription: "Guides organizational growth, capacity building, and long-term developmental initiatives.",
+        bioSummary: "Drives developmental projects, institutional capacity building, and chapter expansion.",
+        email: "dev.secretary@prijiva.org",
         linkedin: "https://linkedin.com/company/prijiva"
+      },
+      {
+        id: "sec-admin",
+        title: "Administrative Secretary",
+        primaryLead: "Bhargavi",
+        associate: "Sreeman",
+        name: "Bhargavi & Sreeman",
+        photo: "assets/images/avatars/avatar-3.svg",
+        roleDescription: "Manages administrative workflows, logistics coordination, and operational compliance.",
+        bioSummary: "Ensures streamlined day-to-day administration, schedule adherence, and operational support.",
+        email: "admin.secretary@prijiva.org",
+        linkedin: "https://linkedin.com/company/prijiva"
+      },
+      {
+        id: "sec-comm",
+        title: "Communication Outreach",
+        primaryLead: "Vaishnavi",
+        associate: "Pranith",
+        name: "Vaishnavi & Pranith",
+        photo: "assets/images/avatars/avatar-1.svg",
+        roleDescription: "Builds community relations, public engagement, and multi-channel civic outreach.",
+        bioSummary: "Spearheads civic awareness communication, public relations, and youth network outreach.",
+        email: "communication@prijiva.org",
+        linkedin: "https://linkedin.com/company/prijiva"
+      },
+      {
+        id: "sec-exec",
+        title: "Executive Secretary",
+        primaryLead: "Vamshika",
+        associate: "Jeevana",
+        name: "Vamshika & Jeevana",
+        photo: "assets/images/avatars/avatar-2.svg",
+        roleDescription: "Coordinates executive decision-making, strategic milestones, and leadership deliverables.",
+        bioSummary: "Supports cross-functional strategic priorities and high-level organizational execution.",
+        email: "exec.secretary@prijiva.org",
+        linkedin: "https://linkedin.com/company/prijiva"
+      },
+      {
+        id: "sec-finance",
+        title: "Finance Secretary",
+        primaryLead: "Chandana",
+        associate: "Manisha",
+        name: "Chandana & Manisha",
+        photo: "assets/images/avatars/avatar-3.svg",
+        roleDescription: "Manages financial planning, budget oversight, resource allocation, and fiscal reporting.",
+        bioSummary: "Oversees transparent financial management, drive budgeting, and fiscal accountability.",
+        email: "finance.secretary@prijiva.org",
+        linkedin: "https://linkedin.com/company/prijiva"
+      }
+    ],
+
+    // Twelve Individual Governing Body Member Name Cards
+    members: [
+      {
+        id: "gb-gen-sec",
+        role: "General Secretary",
+        name: "Gayathri",
+        category: "Primary Lead",
+        photo: "assets/images/avatars/avatar-1.svg",
+        roleDescription: "Oversees overall governance coordination, internal records, and team alignment.",
+        email: "general.secretary@prijiva.org"
+      },
+      {
+        id: "gb-assoc-gen-sec",
+        role: "Associate General Secretary",
+        name: "Monika",
+        category: "Associate",
+        photo: "assets/images/avatars/avatar-2.svg",
+        roleDescription: "Supports governance operations, compliance, and official documentation.",
+        email: "general.secretary@prijiva.org"
+      },
+      {
+        id: "gb-dev-sec",
+        role: "Development Secretary",
+        name: "Reethika",
+        category: "Primary Lead",
+        photo: "assets/images/avatars/avatar-2.svg",
+        roleDescription: "Guides organizational growth, capacity building, and long-term developmental initiatives.",
+        email: "dev.secretary@prijiva.org"
+      },
+      {
+        id: "gb-assoc-dev-sec",
+        role: "Associate Development Secretary",
+        name: "Raveena",
+        category: "Associate",
+        photo: "assets/images/avatars/avatar-3.svg",
+        roleDescription: "Coordinates institutional scaling, chapter expansion, and developmental programs.",
+        email: "dev.secretary@prijiva.org"
+      },
+      {
+        id: "gb-admin-sec",
+        role: "Administrative Secretary",
+        name: "Bhargavi",
+        category: "Primary Lead",
+        photo: "assets/images/avatars/avatar-3.svg",
+        roleDescription: "Manages administrative workflows, logistics coordination, and operational compliance.",
+        email: "admin.secretary@prijiva.org"
+      },
+      {
+        id: "gb-assoc-admin-sec",
+        role: "Associate Administrative Secretary",
+        name: "Sreeman",
+        category: "Associate",
+        photo: "assets/images/avatars/avatar-1.svg",
+        roleDescription: "Supports day-to-day administrative schedules, internal workflows, and logistics.",
+        email: "admin.secretary@prijiva.org"
+      },
+      {
+        id: "gb-comm-outreach",
+        role: "Communication Outreach Lead",
+        name: "Vaishnavi",
+        category: "Primary Lead",
+        photo: "assets/images/avatars/avatar-1.svg",
+        roleDescription: "Spearheads community relations, public engagement, and multi-channel civic campaigns.",
+        email: "communication@prijiva.org"
+      },
+      {
+        id: "gb-assoc-comm-outreach",
+        role: "Associate Communication Outreach",
+        name: "Pranith",
+        category: "Associate",
+        photo: "assets/images/avatars/avatar-2.svg",
+        roleDescription: "Coordinates campus networks, media relations, and civic ambassador engagement.",
+        email: "communication@prijiva.org"
+      },
+      {
+        id: "gb-exec-sec",
+        role: "Executive Secretary",
+        name: "Vamshika",
+        category: "Primary Lead",
+        photo: "assets/images/avatars/avatar-2.svg",
+        roleDescription: "Coordinates executive decision-making, strategic milestones, and leadership deliverables.",
+        email: "exec.secretary@prijiva.org"
+      },
+      {
+        id: "gb-assoc-exec-sec",
+        role: "Associate Executive Secretary",
+        name: "Jeevana",
+        category: "Associate",
+        photo: "assets/images/avatars/avatar-3.svg",
+        roleDescription: "Assists with cross-functional milestones, leadership priorities, and executive execution.",
+        email: "exec.secretary@prijiva.org"
+      },
+      {
+        id: "gb-fin-sec",
+        role: "Finance Secretary",
+        name: "Chandana",
+        category: "Primary Lead",
+        photo: "assets/images/avatars/avatar-3.svg",
+        roleDescription: "Manages financial planning, budget oversight, resource allocation, and fiscal reporting.",
+        email: "finance.secretary@prijiva.org"
+      },
+      {
+        id: "gb-assoc-fin-sec",
+        role: "Associate Finance Secretary",
+        name: "Manisha",
+        category: "Associate",
+        photo: "assets/images/avatars/avatar-1.svg",
+        roleDescription: "Supports transparent financial auditing, drive budgeting, and fiscal accountability.",
+        email: "finance.secretary@prijiva.org"
       }
     ]
   },
@@ -196,55 +330,57 @@ const SITE_DATA = {
     
     departments: [
       {
-        id: "dept-events",
-        departmentName: "Events Planning & Support",
-        description: "Plans, coordinates, and supports PriJiva events, workshops, civic drives, volunteer schedules, and on-ground logistics.",
-        tagColor: "teal",
-        head: {
-          name: "Department Coordination Desk",
-          role: "Department Head",
+        id: "dept-media",
+        departmentName: "Content Media",
+        description: "Creates stories, graphics, videos, social-media content, campaign material, and media documentation.",
+        tagColor: "lemon",
+        members: ["Madhav", "Harish"],
+        lead: {
+          name: "Madhav",
+          role: "Team Leader",
           photo: "assets/images/avatars/avatar-1.svg",
-          bio: "Oversees the event calendar, scheduling, safety protocols, and venue permissions.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
+          bio: "Shapes PriJiva's creative visual voice, campaigns, and viral civic storytelling.",
+          email: "media@prijiva.org",
+          phone: "+91 98765 43210",
           linkedin: "https://linkedin.com/company/prijiva"
         },
-        subHead: {
-          name: "Operations Support Desk",
-          role: "Department Sub-Head",
+        associate: {
+          name: "Harish",
+          role: "Team Leader",
           photo: "assets/images/avatars/avatar-2.svg",
-          bio: "Assists with drive-day coordination, volunteer rosters, and equipment setup.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
+          bio: "Coordinates ground photography, reels, and digital campaign collateral.",
+          email: "media@prijiva.org",
+          phone: "+91 98765 43210",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
-          "Annual and monthly civic drive calendars",
-          "Volunteer scheduling, safety briefings, and permissions",
-          "On-ground logistics, equipment, and crowd coordination"
+          "Social media campaigns, reels, and civic infographics",
+          "Street banners, posters, and campaign print collateral",
+          "Live photo and video documentation of all drives"
         ]
       },
       {
-        id: "dept-research",
-        departmentName: "Documentation & Research",
+        id: "dept-documentation",
+        departmentName: "Documentation",
         description: "Documents activities, maintains records, gathers civic research, tracks outcomes, and supports evidence-led initiatives.",
         tagColor: "indigo",
-        head: {
-          name: "Department Coordination Desk",
-          role: "Department Head",
+        members: ["Harini", "Alexander"],
+        lead: {
+          name: "Harini",
+          role: "Team Leader",
           photo: "assets/images/avatars/avatar-3.svg",
           bio: "Leads civic scorecards, survey methodologies, and data-backed reports.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
+          email: "documentation@prijiva.org",
+          phone: "+91 98765 43210",
           linkedin: "https://linkedin.com/company/prijiva"
         },
-        subHead: {
-          name: "Operations Support Desk",
-          role: "Department Sub-Head",
+        associate: {
+          name: "Alexander",
+          role: "Team Leader",
           photo: "assets/images/avatars/avatar-1.svg",
           bio: "Manages drive documentation archives and post-event analytics.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
+          email: "documentation@prijiva.org",
+          phone: "+91 98765 43210",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
@@ -255,25 +391,26 @@ const SITE_DATA = {
       },
       {
         id: "dept-tech",
-        departmentName: "Technology",
+        departmentName: "Tech",
         description: "Manages PriJiva’s website, digital tools, data systems, internal technology needs, and digital innovation.",
         tagColor: "pink",
-        head: {
-          name: "Department Coordination Desk",
-          role: "Department Head",
+        members: ["Prabhakar", "Navya"],
+        lead: {
+          name: "Prabhakar",
+          role: "Team Leader",
           photo: "assets/images/avatars/avatar-2.svg",
           bio: "Directs web infrastructure, digital tools, and data platform development.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
+          email: "tech@prijiva.org",
+          phone: "+91 98765 43210",
           linkedin: "https://linkedin.com/company/prijiva"
         },
-        subHead: {
-          name: "Operations Support Desk",
-          role: "Department Sub-Head",
+        associate: {
+          name: "Navya",
+          role: "Team Leader",
           photo: "assets/images/avatars/avatar-3.svg",
           bio: "Maintains form integrations, site updates, and tech automations.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
+          email: "tech@prijiva.org",
+          phone: "+91 98765 43210",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
@@ -283,32 +420,63 @@ const SITE_DATA = {
         ]
       },
       {
-        id: "dept-media",
-        departmentName: "Content & Media",
-        description: "Creates stories, graphics, videos, social-media content, campaign material, and media documentation.",
-        tagColor: "lemon",
-        head: {
-          name: "Department Coordination Desk",
-          role: "Department Head",
+        id: "dept-events",
+        departmentName: "Events Planning",
+        description: "Plans, coordinates, and supports PriJiva events, workshops, civic drives, volunteer schedules, and on-ground logistics.",
+        tagColor: "teal",
+        members: ["Radha", "Akshay"],
+        lead: {
+          name: "Radha",
+          role: "Team Leader",
           photo: "assets/images/avatars/avatar-1.svg",
-          bio: "Shapes PriJiva's creative visual voice, campaigns, and viral civic storytelling.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
+          bio: "Oversees the event calendar, scheduling, safety protocols, and venue permissions.",
+          email: "events@prijiva.org",
+          phone: "+91 98765 43210",
           linkedin: "https://linkedin.com/company/prijiva"
         },
-        subHead: {
-          name: "Operations Support Desk",
-          role: "Department Sub-Head",
+        associate: {
+          name: "Akshay",
+          role: "Team Leader",
           photo: "assets/images/avatars/avatar-2.svg",
-          bio: "Coordinates ground photography, reels, and digital campaign collateral.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
+          bio: "Assists with drive-day coordination, volunteer rosters, and equipment setup.",
+          email: "events@prijiva.org",
+          phone: "+91 98765 43210",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
-          "Social media campaigns, reels, and civic infographics",
-          "Street banners, posters, and campaign print collateral",
-          "Live photo and video documentation of all drives"
+          "Annual and monthly civic drive calendars",
+          "Volunteer scheduling, safety briefings, and permissions",
+          "On-ground logistics, equipment, and crowd coordination"
+        ]
+      },
+      {
+        id: "dept-outreach",
+        departmentName: "Outreach",
+        description: "Builds community relationships, coordinates field engagement, conducts local outreach, and supports ground-level civic action.",
+        tagColor: "indigo",
+        members: ["Saraf", "Vinay"],
+        lead: {
+          name: "Saraf",
+          role: "Team Leader",
+          photo: "assets/images/avatars/avatar-2.svg",
+          bio: "Leads campus chapter expansion, resident alliances, and local outreach.",
+          email: "outreach@prijiva.org",
+          phone: "+91 98765 43210",
+          linkedin: "https://linkedin.com/company/prijiva"
+        },
+        associate: {
+          name: "Vinay",
+          role: "Team Leader",
+          photo: "assets/images/avatars/avatar-3.svg",
+          bio: "Liaises with student leaders and neighborhood welfare associations.",
+          email: "outreach@prijiva.org",
+          phone: "+91 98765 43210",
+          linkedin: "https://linkedin.com/company/prijiva"
+        },
+        responsibilities: [
+          "Launching & supporting school/college campus chapters",
+          "Resident Welfare Association (RWA) and ward engagement",
+          "Neighborhood volunteer mobilization & local drives"
         ]
       },
       {
@@ -316,57 +484,29 @@ const SITE_DATA = {
         departmentName: "People Management",
         description: "Supports volunteer onboarding, member wellbeing, internal coordination, recognition, and team culture.",
         tagColor: "teal",
-        head: {
-          name: "Department Coordination Desk",
-          role: "Department Head",
+        members: ["Puneeth", "Vikranth"],
+        lead: {
+          name: "Puneeth",
+          role: "Team Leader",
           photo: "assets/images/avatars/avatar-3.svg",
           bio: "Focuses on volunteer onboarding, community health, and student recognition.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
+          email: "people@prijiva.org",
+          phone: "+91 98765 43210",
           linkedin: "https://linkedin.com/company/prijiva"
         },
-        subHead: {
-          name: "Operations Support Desk",
-          role: "Department Sub-Head",
+        associate: {
+          name: "Vikranth",
+          role: "Team Leader",
           photo: "assets/images/avatars/avatar-1.svg",
           bio: "Coordinates volunteer feedback, recognition awards, and chapter check-ins.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
+          email: "people@prijiva.org",
+          phone: "+91 98765 43210",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
           "Volunteer welcoming, training, and chapter orientation",
           "Volunteer certificates, badges, and recognition",
           "Nurturing an inclusive, positive youth culture"
-        ]
-      },
-      {
-        id: "dept-outreach",
-        departmentName: "Outreach & Ground",
-        description: "Builds community relationships, coordinates field engagement, conducts local outreach, and supports ground-level civic action.",
-        tagColor: "indigo",
-        head: {
-          name: "Department Coordination Desk",
-          role: "Department Head",
-          photo: "assets/images/avatars/avatar-2.svg",
-          bio: "Leads campus chapter expansion, resident alliances, and local outreach.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
-          linkedin: "https://linkedin.com/company/prijiva"
-        },
-        subHead: {
-          name: "Operations Support Desk",
-          role: "Department Sub-Head",
-          photo: "assets/images/avatars/avatar-3.svg",
-          bio: "Liaises with student leaders and neighborhood welfare associations.",
-          email: "hello@prijiva.org",
-          phone: "Contact via Desk",
-          linkedin: "https://linkedin.com/company/prijiva"
-        },
-        responsibilities: [
-          "Launching & supporting school/college campus chapters",
-          "Resident Welfare Association (RWA) and ward engagement",
-          "Neighborhood volunteer mobilization & local drives"
         ]
       }
     ]
@@ -377,10 +517,10 @@ const SITE_DATA = {
     return this.organizingBody.departments.map(d => ({
       id: d.id,
       teamName: d.departmentName,
-      leadName: d.head.name,
-      role: d.head.role,
-      email: d.head.email,
-      phone: d.head.phone,
+      leadName: d.members.join(' & '),
+      role: `Team Leaders: ${d.members.join(', ')}`,
+      email: d.lead.email,
+      phone: d.lead.phone,
       badgeColor: d.tagColor,
       description: d.description,
       responsibilities: d.responsibilities

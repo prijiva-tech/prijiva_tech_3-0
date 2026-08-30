@@ -49,7 +49,7 @@ function initTeamDirectory() {
           </ul>
 
           <div style="background: var(--bg-body); border-radius: var(--radius-sm); border: 1px solid var(--border-color); padding: 0.75rem 0.85rem; font-size: 0.82rem; display: flex; flex-direction: column; gap: 0.35rem;">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div class="team-email-row" style="display: none; align-items: center; justify-content: space-between;">
               <span style="color: var(--text-muted);">📧 Email:</span>
               <span style="font-weight: 600; color: var(--text-primary); font-family: var(--font-mono); font-size: 0.8rem;">${escapeHtml(team.email)}</span>
             </div>
@@ -64,7 +64,7 @@ function initTeamDirectory() {
           <button type="button" class="btn btn-teal btn-sm message-team-trigger" style="flex: 1;" data-team-name="${escapeHtml(team.teamName)}">
             ✉️ Contact Team
           </button>
-          <button type="button" class="btn btn-secondary btn-sm copy-btn" data-copy-text="${escapeHtml(team.email)}" title="Copy Email">
+          <button type="button" class="btn btn-secondary btn-sm copy-btn team-email-copy-btn" style="display: none;" data-copy-text="${escapeHtml(team.email)}" title="Copy Email">
             📋 Copy
           </button>
         </div>
