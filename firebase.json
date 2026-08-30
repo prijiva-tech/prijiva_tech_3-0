@@ -4,5 +4,22 @@
     "location": "asia-south1",
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
+  },
+  "hosting": {
+    "public": ".",
+    "cleanUrls": true,
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "firestore.rules",
+      "firestore.indexes.json",
+      "skills-lock.json",
+      "**/.*",
+      ".agents/**",
+      "docs/**",
+      "scripts/**",
+      "workers/**",
+      "README.md"
+    ]
   }
 }
