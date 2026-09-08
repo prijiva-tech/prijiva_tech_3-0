@@ -609,15 +609,22 @@
   margin: 0;
 }
 
-/* 4. Quiet Values List (2-column on desktop, 1 on mobile) */
+/* 4. Quiet Values List (3x2 grid on desktop, 2-col on tablet, 1-col on mobile) */
 .values-quiet-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem 3rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.25rem 2rem;
   margin-top: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
+  .values-quiet-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
   .values-quiet-list {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -1267,6 +1274,26 @@
 /* ====================================================================
    OUR WORK & PROJECT DETAIL PAGE STYLES
    ==================================================================== */
+
+/* --- Our Works Hero --- */
+.page-hero {
+  padding: 3.5rem 0 2rem 0;
+}
+
+.page-hero-title {
+  margin-bottom: 0.75rem;
+  color: var(--color-indigo);
+}
+
+[data-theme="dark"] .page-hero-title {
+  color: #ffffff;
+}
+
+.page-hero-desc {
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
 
 .work-gallery-badge {
   position: absolute;

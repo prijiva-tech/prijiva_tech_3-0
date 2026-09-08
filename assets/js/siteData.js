@@ -14,9 +14,9 @@ const SITE_DATA = {
     tagline: "Making the World Civically Abled",
     shortDescription: "A dynamic, youth-led civic movement empowering Gen Z and students to build cleaner, safer, and more respectful public spaces.",
     foundedYear: "2024",
-    hqLocation: "Bengaluru, Karnataka, India",
-    contactEmail: "hello@prijiva.org",
-    contactPhone: "+91 98765 43210",
+    hqLocation: "Hyderabad, Telangana, India",
+    contactEmail: "prijiva2040@gmail.com",
+    contactPhone: "",
     brandMeaning: {
       headline: "What PriJiva Means",
       pri: "Prithvi (Earth)",
@@ -28,7 +28,7 @@ const SITE_DATA = {
       linkedin: "https://linkedin.com/company/prijiva",
       twitter: "https://twitter.com/prijiva_org",
       youtube: "https://youtube.com/@prijiva",
-      whatsappCommunity: "https://chat.whatsapp.com/invite"
+      whatsappCommunity: ""
     }
   },
 
@@ -36,28 +36,28 @@ const SITE_DATA = {
   impactStats: [
     {
       id: "citizens-reached",
-      targetNumber: 25000,
+      targetNumber: 0,
       suffix: "+",
       label: "Citizens Reached",
       description: "Directly engaged via street drives and workshops"
     },
     {
       id: "events-conducted",
-      targetNumber: 65,
+      targetNumber: 0,
       suffix: "+",
       label: "Civic Drives Conducted",
       description: "Conducted across universities & transit hubs"
     },
     {
       id: "active-volunteers",
-      targetNumber: 1200,
+      targetNumber: 0,
       suffix: "+",
       label: "Youth Volunteers",
       description: "Active student leads leading local actions"
     },
     {
       id: "campus-chapters",
-      targetNumber: 18,
+      targetNumber: 0,
       suffix: "",
       label: "Campus Chapters",
       description: "Active university and high school civic pods"
@@ -104,7 +104,7 @@ const SITE_DATA = {
     name: "Poddutur Pavan Sai",
     role: "Founder & Executive Lead, PriJiva",
     photo: "assets/images/placeholders/founder-placeholder.svg",
-    shortQuote: "“Civic sense is not an abstract theory in a textbook; it is the daily muscle memory of respecting the shared spaces we inherit together.”",
+    shortQuote: "",
     bio: "Founded PriJiva while navigating everyday civic hurdles as a student. Believing that youth are not just future citizens but today's most energetic catalysts, they mobilized peers to move beyond passive online complaining into proactive, joyful, on-ground civic leadership.",
     messageHeadline: "Why We Created PriJiva",
     messageBody: [
@@ -123,14 +123,14 @@ const SITE_DATA = {
     // Primary Leadership: Board / Founder
     boardSecretary: {
       name: "Poddutur Pavan Sai",
-      designation: "Board Secretary & Founder",
+      designation: "Founder",
       photo: "assets/images/placeholders/founder-placeholder.svg",
       roleDescription: "Guides overall institutional vision, strategic priorities, and organizational governance.",
       bioSummary: "Student changemaker and founder of PriJiva, dedicated to turning everyday civic awareness into practical youth leadership.",
       email: "founder@prijiva.org",
-      phone: "+91 98765 43210",
+      phone: "",
       linkedin: "https://linkedin.com/company/prijiva",
-      leadershipMessage: "“Civic sense is not an abstract theory in a textbook; it is the daily muscle memory of respecting the shared spaces we inherit together.”"
+      leadershipMessage: ""
     },
 
     // Six Governing Body Portfolios
@@ -341,7 +341,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-1.svg",
           bio: "Shapes PriJiva's creative visual voice, campaigns, and viral civic storytelling.",
           email: "media@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         associate: {
@@ -350,7 +350,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-2.svg",
           bio: "Coordinates ground photography, reels, and digital campaign collateral.",
           email: "media@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
@@ -371,7 +371,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-3.svg",
           bio: "Leads civic scorecards, survey methodologies, and data-backed reports.",
           email: "documentation@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         associate: {
@@ -380,7 +380,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-1.svg",
           bio: "Manages drive documentation archives and post-event analytics.",
           email: "documentation@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
@@ -401,7 +401,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-2.svg",
           bio: "Directs web infrastructure, digital tools, and data platform development.",
           email: "tech@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         associate: {
@@ -410,7 +410,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-3.svg",
           bio: "Maintains form integrations, site updates, and tech automations.",
           email: "tech@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
@@ -431,7 +431,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-1.svg",
           bio: "Oversees the event calendar, scheduling, safety protocols, and venue permissions.",
           email: "events@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         associate: {
@@ -440,7 +440,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-2.svg",
           bio: "Assists with drive-day coordination, volunteer rosters, and equipment setup.",
           email: "events@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
@@ -461,7 +461,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-2.svg",
           bio: "Leads campus chapter expansion, resident alliances, and local outreach.",
           email: "outreach@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         associate: {
@@ -470,7 +470,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-3.svg",
           bio: "Liaises with student leaders and neighborhood welfare associations.",
           email: "outreach@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
@@ -491,7 +491,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-3.svg",
           bio: "Focuses on volunteer onboarding, community health, and student recognition.",
           email: "people@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         associate: {
@@ -500,7 +500,7 @@ const SITE_DATA = {
           photo: "assets/images/avatars/avatar-1.svg",
           bio: "Coordinates volunteer feedback, recognition awards, and chapter check-ins.",
           email: "people@prijiva.org",
-          phone: "+91 98765 43210",
+          phone: "",
           linkedin: "https://linkedin.com/company/prijiva"
         },
         responsibilities: [
