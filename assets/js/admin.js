@@ -717,7 +717,7 @@ function renderEventsTable() {
           <span class="admin-status-badge ${badgeClass}" ${badgeStyle}>${badgeLabel}</span>
         </td>
         <td>
-          ${item.rsvpUrl ? `<a href="${escapeHtml(item.rsvpUrl)}" target="_blank" style="font-size: 0.8rem; color: var(--color-teal); text-decoration: underline;">Google Form</a>` : '<span style="color: var(--text-muted); font-size: 0.8rem;">None</span>'}
+          ${item.rsvpUrl ? `<a href="${escapeHtml(item.rsvpUrl)}" target="_blank" style="font-size: 0.8rem; color: var(--color-teal); text-decoration: underline;">Google Form ↗</a>` : '<span style="color: var(--text-muted); font-size: 0.8rem;">None</span>'}
         </td>
         <td>
           <div class="admin-actions-cell">

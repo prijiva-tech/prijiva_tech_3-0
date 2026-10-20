@@ -212,11 +212,13 @@ async function initEventsManager() {
             </div>
 
             <div class="event-card-footer">
-              ${isUpcoming ? `
-                <button type="button" class="btn btn-pink btn-sm rsvp-trigger-btn" data-event-title="${escapeHtml(item.title)}" data-event-date="${escapeHtml(item.date)}" data-event-loc="${escapeHtml(item.location)}" data-rsvp-url="${escapeHtml(item.rsvpUrl || '')}">
-                  RSVP / Volunteer →
-                </button>
-              ` : `
+              ${isUpcoming ? (
+                (item.rsvpUrl && (item.rsvpUrl.startsWith('http://') || item.rsvpUrl.startsWith('https://'))) ? `
+                  <button type="button" class="btn btn-pink btn-sm rsvp-trigger-btn" data-event-title="${escapeHtml(item.title)}" data-event-date="${escapeHtml(item.date)}" data-event-loc="${escapeHtml(item.location)}" data-rsvp-url="${escapeHtml(item.rsvpUrl)}">
+                    Join Event →
+                  </button>
+                ` : ''
+              ) : `
                 <span class="badge-tag badge-teal">✓ Verified Impact</span>
               `}
               <button type="button" class="btn btn-outline btn-sm share-event-btn" data-event-title="${escapeHtml(item.title)}">

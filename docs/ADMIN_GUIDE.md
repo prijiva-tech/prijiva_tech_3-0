@@ -109,11 +109,11 @@ PriJiva uses **Cloudinary** for fast and optimized photo delivery:
 
 ---
 
-### 5. Adding Google Form RSVP Links
-1. Create a registration form in Google Forms.
+### 5. Adding Join Event Google Form Links
+1. Create an event registration form in Google Forms.
 2. Copy the shareable short link (e.g. `https://forms.gle/xyz123...`).
-3. Paste the link into the **Google Form RSVP URL** field.
-4. On the public website, when citizens click **"RSVP / Volunteer →"**, it opens your Google Form in a new tab.
+3. Paste the link into the **Join Event Google Form Link** field in the event creator/editor.
+4. On the public website, when a link is provided, a **"Join Event →"** button will appear on the event card and open your Google Form in a new tab. If no link is provided, the join button will be hidden automatically.
 
 ---
 

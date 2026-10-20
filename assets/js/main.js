@@ -6,6 +6,10 @@
  * ====================================================================
  */
 
+/* --- Centralized Join Us / Volunteer Google Form URL --- */
+// Replace this placeholder link with your official Google Form URL whenever ready:
+window.PRIJIVA_JOIN_US_FORM_URL = 'https://forms.gle/prijiva-join-us-volunteer';
+
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initStickyHeader();
@@ -267,6 +271,13 @@ function initModals() {
 }
 
 function openModal(modalId) {
+  // If triggering the volunteer / Join Us action, open the Google Form in a new tab
+  if (modalId === 'volunteer-modal') {
+    const formUrl = window.PRIJIVA_JOIN_US_FORM_URL || 'https://forms.gle/prijiva-join-us-volunteer';
+    window.open(formUrl, '_blank', 'noopener,noreferrer');
+    return;
+  }
+
   const modal = document.getElementById(modalId);
   if (!modal) return;
   modal.classList.add('active');
